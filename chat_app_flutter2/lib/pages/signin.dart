@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class signin extends StatelessWidget {
   var green;
@@ -12,26 +14,33 @@ class signin extends StatelessWidget {
     dark_blue = c3;
     darker_blue = c4;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: null,
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             width: double.infinity,
             height: double.infinity,
-            color: dark_blue,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/img/background.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // logo
-                  SizedBox(
+                  const SizedBox(
                     height: 230,
                   ),
                   logo(green: green),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
 
@@ -44,8 +53,8 @@ class signin extends StatelessWidget {
                     ),
                   ),
                   TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Enter your name',
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your name',
                     ),
                     keyboardType: TextInputType.name,
                     style: TextStyle(
@@ -53,7 +62,7 @@ class signin extends StatelessWidget {
                       color: green,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -63,22 +72,63 @@ class signin extends StatelessWidget {
                       color: green,
                     ),
                   ),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Enter your phone number',
-                      prefix: Text('+964   '),
+                  IntlPhoneField(
+                    decoration: const InputDecoration(
+                      labelText: 'Phone Number',
                     ),
                     keyboardType: TextInputType.phone,
                     style: TextStyle(
                       fontSize: 13.5,
                       color: green,
                     ),
+                    initialCountryCode: 'IQ',
+                    onChanged: (phone) {
+                      print(phone.completeNumber);
+                    },
                   ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  ForwardButtom(green: green, darker_blue: darker_blue)
                 ],
               ),
             ),
           ),
         ));
+  }
+}
+
+class ForwardButtom extends StatelessWidget {
+  const ForwardButtom({
+    Key? key,
+    required this.green,
+    required this.darker_blue,
+  }) : super(key: key);
+
+  final green;
+  final darker_blue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        alignment: Alignment.center,
+        width: 66,
+        height: 66,
+        decoration: BoxDecoration(
+          color: green,
+          borderRadius: BorderRadius.circular(33),
+        ),
+        child: IconButton(
+          icon: Icon(
+            Icons.arrow_forward_rounded,
+            color: darker_blue,
+            size: 33,
+          ),
+          onPressed: () {},
+        ),
+      ),
+    );
   }
 }
 
@@ -99,7 +149,7 @@ class logo extends StatelessWidget {
           width: 100,
           height: 100,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(
