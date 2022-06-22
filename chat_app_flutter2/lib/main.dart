@@ -2,6 +2,9 @@ import 'package:chat_app_flutter2/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 
+import 'pages/home.dart';
+import 'pages/verify.dart';
+
 void main() => runApp(const MyApp());
 
 var green = const Color.fromRGBO(30, 253, 119, 1);
@@ -34,7 +37,7 @@ class _SplahPage extends StatelessWidget {
   const _SplahPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const splashScreen();
+    return const SplashScreen();
   }
 }
 
@@ -43,12 +46,13 @@ class _SigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return signin(green, dark_green, dark_blue, darker_blue);
+    // return Signin(green, dark_green, dark_blue, darker_blue);
+    return HomePage();
   }
 }
 
-class splashScreen extends StatelessWidget {
-  const splashScreen({
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({
     Key? key,
   }) : super(key: key);
 

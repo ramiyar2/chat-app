@@ -1,19 +1,37 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:chat_app_flutter2/main.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'verify.dart';
 
-class signin extends StatelessWidget {
+class Signin extends StatefulWidget {
   var green;
   var dark_green;
   var dark_blue;
   var darker_blue;
-  signin(c1, c2, c3, c4, {Key? key}) : super(key: key) {
+
+  Signin(c1, c2, c3, c4, {Key? key}) : super(key: key) {
     green = c1;
     dark_green = c2;
     dark_blue = c3;
     darker_blue = c4;
   }
+
+  @override
+  State<Signin> createState() => _SigninState();
+}
+
+class _SigninState extends State<Signin> {
+  var inputName = TextEditingController();
+
+  var inputNumber = TextEditingController();
+
+  var strInputNumber = ' ';
+  var strInputName = ' ';
+  bool NumberIsEmpty = true;
+  bool NameIsEmpty = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +41,6 @@ class signin extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             width: double.infinity,
-            height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/img/background.png"),
@@ -39,7 +56,7 @@ class signin extends StatelessWidget {
                   const SizedBox(
                     height: 230,
                   ),
-                  logo(green: green),
+                  Logo(green: widget.green),
                   const SizedBox(
                     height: 40,
                   ),
@@ -49,17 +66,18 @@ class signin extends StatelessWidget {
                     "Name",
                     style: TextStyle(
                       fontSize: 16,
-                      color: green,
+                      color: widget.green,
                     ),
                   ),
                   TextField(
+                    controller: inputName,
                     decoration: const InputDecoration(
                       labelText: 'Enter your name',
                     ),
                     keyboardType: TextInputType.name,
                     style: TextStyle(
                       fontSize: 13.5,
-                      color: green,
+                      color: widget.green,
                     ),
                   ),
                   const SizedBox(
@@ -69,17 +87,31 @@ class signin extends StatelessWidget {
                     "Phone number",
                     style: TextStyle(
                       fontSize: 16,
-                      color: green,
+                      color: widget.green,
                     ),
                   ),
                   IntlPhoneField(
+                    controller: inputNumber,
                     decoration: const InputDecoration(
                       labelText: 'Phone Number',
                     ),
                     keyboardType: TextInputType.phone,
                     style: TextStyle(
                       fontSize: 13.5,
+                      color: widget.green,
+                    ),
+                    dropdownTextStyle: TextStyle(
+                      fontSize: 13.5,
+                      color: widget.green,
+                    ),
+                    dropdownIcon: Icon(
+                      Icons.arrow_drop_down,
                       color: green,
+                    ),
+                    pickerDialogStyle: PickerDialogStyle(
+                      backgroundColor: dark_blue,
+                      countryNameStyle: TextStyle(color: Colors.white),
+                      countryCodeStyle: TextStyle(color: Colors.white),
                     ),
                     initialCountryCode: 'IQ',
                     onChanged: (phone) {
@@ -89,51 +121,132 @@ class signin extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  ForwardButtom(green: green, darker_blue: darker_blue)
+
+                  //ForwardButtom
+                  ForwardButtom(context),
                 ],
               ),
             ),
           ),
         ));
   }
-}
 
-class ForwardButtom extends StatelessWidget {
-  const ForwardButtom({
-    Key? key,
-    required this.green,
-    required this.darker_blue,
-  }) : super(key: key);
-
-  final green;
-  final darker_blue;
-
-  @override
-  Widget build(BuildContext context) {
+  Center ForwardButtom(BuildContext context) {
     return Center(
       child: Container(
         alignment: Alignment.center,
         width: 66,
         height: 66,
         decoration: BoxDecoration(
-          color: green,
+          color: widget.green,
           borderRadius: BorderRadius.circular(33),
         ),
         child: IconButton(
           icon: Icon(
             Icons.arrow_forward_rounded,
-            color: darker_blue,
+            color: widget.darker_blue,
             size: 33,
           ),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              strInputNumber = inputNumber.text;
+              strInputNumber.isEmpty
+                  ? NumberIsEmpty = true
+                  : NumberIsEmpty = false;
+            });
+            if (NumberIsEmpty) {
+              ErrorAlert(context);
+            } else {
+              Alert(context);
+            }
+          },
         ),
       ),
     );
   }
+
+  Future<dynamic> Alert(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return Center(
+            child: Container(
+              width: 500,
+              height: 290,
+              child: AlertDialog(
+                title: Text('Are you sure !'),
+                content: Column(children: [
+                  Text('Are you sure that the number +964 ' +
+                      strInputNumber +
+                      ' is your number'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Edit'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) => Verify(
+                                      green,
+                                      dark_green,
+                                      dark_blue,
+                                      darker_blue)));
+                        },
+                        child: Text('Yes'),
+                      )
+                    ],
+                  )
+                ]),
+              ),
+            ),
+          );
+        });
+  }
+
+  Future<dynamic> ErrorAlert(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return Center(
+            child: Container(
+              width: 500,
+              height: 240,
+              child: AlertDialog(
+                backgroundColor: dark_blue,
+                title: Text('Erorr !'),
+                content: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text('please enter right number '),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Edit'),
+                      )
+                    ]),
+              ),
+            ),
+          );
+        });
+  }
 }
 
-class logo extends StatelessWidget {
-  const logo({
+class Logo extends StatelessWidget {
+  const Logo({
     Key? key,
     required this.green,
   }) : super(key: key);
