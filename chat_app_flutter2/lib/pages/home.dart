@@ -22,14 +22,56 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SafeArea(
+            child: Container(),
+          ),
+          Padding(
+            padding:
+                size.width > 600 ? EdgeInsets.all(25.0) : EdgeInsets.all(16.0),
+            child: const Text(
+              "Chat with \nyour friends",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+              ),
+            ),
+          ),
           ElevatedButton(
             child: const Text('Load Data'),
             onPressed: readJson,
           ),
+          _items.isNotEmpty
+              ? Expanded(
+                  child: Container(
+                    height: 537,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(40.0),
+                            topLeft: Radius.circular(40.0))),
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: _items.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text(_items[index]["userName"]),
+                          subtitle: Text(_items[index]["massage"]),
+                          leading: Image.network(_items[index]["img"]),
+                        );
+                      },
+                    ),
+                  ),
+                )
+              : Container(),
+          /*
           _items.isNotEmpty
               ? Expanded(
                   child: ListView.builder(
@@ -38,7 +80,9 @@ class _HomePageState extends State<HomePage> {
                       return Card(
                         margin: const EdgeInsets.all(10),
                         child: ListTile(
-                          leading: Image.network(_items[index]["img"]),
+                          leading: Image.network(
+                            _items[index]["img"],
+                          ),
                           title: Text(_items[index]["userName"]),
                           subtitle: Text(_items[index]["massage"]),
                         ),
@@ -46,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 )
-              : Container(),
+              : Container(),*/
         ],
       ),
     );
