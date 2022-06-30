@@ -92,10 +92,12 @@ class HomePage extends StatelessWidget {
                       width: 60,
                       height: 60,
                       decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(store[index]['img']),
-                              fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(60)),
+                        image: DecorationImage(
+                            image: NetworkImage(store[index]['img']),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(60),
+                        border: Border.all(color: green, width: 2),
+                      ),
                     ),
                 separatorBuilder: (BuildContext context, int index) =>
                     const SizedBox(
