@@ -14,7 +14,7 @@ List<Map> items = [
     "userName": "Aadeel",
     "img": "http://placeimg.com/640/480/any",
     "time": "10:10 PM",
-    "unread": 1,
+    "unread": 2,
     "massage": "how are you"
   },
   {
@@ -52,6 +52,38 @@ List<Map> items = [
   {
     "userId": 7,
     "id": 7,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 8,
+    "id": 8,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 9,
+    "id": 9,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 10,
+    "id": 10,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 11,
+    "id": 11,
     "userName": "Adnan",
     "img": "http://placeimg.com/640/480/any",
     "time": "yesterday",
@@ -112,6 +144,38 @@ List<Map> store = [
   {
     "userId": 7,
     "id": 7,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 8,
+    "id": 8,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 9,
+    "id": 9,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 10,
+    "id": 10,
+    "userName": "Adnan",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "yesterday",
+    "massage": "Hi"
+  },
+  {
+    "userId": 11,
+    "id": 11,
     "userName": "Adnan",
     "img": "http://placeimg.com/640/480/any",
     "time": "yesterday",
