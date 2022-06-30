@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
+          store.isEmpty ? Expanded(child: Container()) : Container(),
           items.isNotEmpty
               ? Expanded(
                   child: Container(
