@@ -1,24 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import '../data/data.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List _items = [];
-
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/data/massages.json');
-    final data = await json.decode(response);
-    setState(() {
-      _items = data["chats"];
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +27,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          ElevatedButton(
-            child: const Text('Load Data'),
-            onPressed: readJson,
-          ),
-          _items.isNotEmpty
+          items.isNotEmpty
               ? Expanded(
                   child: Container(
                     height: 537,
@@ -59,38 +39,32 @@ class _HomePageState extends State<HomePage> {
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemCount: _items.length,
+                      itemCount: items.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(_items[index]["userName"]),
-                          subtitle: Text(_items[index]["massage"]),
-                          leading: Image.network(_items[index]["img"]),
+                        return Card(
+                          margin: const EdgeInsets.all(10),
+                          child: ListTile(
+                            title: Text(items[index]["userName"]),
+                            subtitle: Text(items[index]["massage"]),
+                            leading: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                      items[index]["img"],
+                                    ),
+                                  )),
+                            ),
+                          ),
                         );
                       },
                     ),
                   ),
                 )
               : Container(),
-          /*
-          _items.isNotEmpty
-              ? Expanded(
-                  child: ListView.builder(
-                    itemCount: _items.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        margin: const EdgeInsets.all(10),
-                        child: ListTile(
-                          leading: Image.network(
-                            _items[index]["img"],
-                          ),
-                          title: Text(_items[index]["userName"]),
-                          subtitle: Text(_items[index]["massage"]),
-                        ),
-                      );
-                    },
-                  ),
-                )
-              : Container(),*/
         ],
       ),
     );
