@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:chat_app_flutter2/main.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
@@ -35,13 +37,25 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: size.width > 600
                     ? const EdgeInsets.all(25.0)
-                    : const EdgeInsets.all(16.0),
-                child: const Text(
-                  "Chat with \nyour friends",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
+                    : const EdgeInsets.all(10.0),
+                child: ListTile(
+                  leading: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            items[0]["img"],
+                          ),
+                        )),
+                  ),
+                  trailing: Wrap(
+                    children: [
+                      Icon(Icons.search),
+                      Icon(Icons.menu),
+                    ],
                   ),
                 ),
               ),
