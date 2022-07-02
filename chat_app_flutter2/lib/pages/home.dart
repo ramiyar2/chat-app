@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
         highlightColor: dark_blue,
         splashColor: dark_green,
         textTheme: const TextTheme(
-          titleMedium: TextStyle(
+          subtitle1: TextStyle(
             color: Colors.white,
             fontSize: 20,
           ),
