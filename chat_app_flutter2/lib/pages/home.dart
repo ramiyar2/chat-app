@@ -14,6 +14,30 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Theme(),
       home: Scaffold(
+        bottomNavigationBar: Container(
+          color: darker_blue,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(10),
+              topLeft: Radius.circular(10),
+            ),
+            child: BottomNavigationBar(
+              selectedFontSize: 0,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: '1'),
+                BottomNavigationBarItem(icon: Icon(Icons.usb), label: '2'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.assignment_ind), label: '3'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.multiline_chart), label: '4'),
+              ],
+              currentIndex: 0,
+              selectedItemColor: Colors.indigo,
+              unselectedItemColor: Colors.indigo,
+              showUnselectedLabels: true,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
