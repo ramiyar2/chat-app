@@ -5,29 +5,14 @@ import 'package:flutter/material.dart';
 import '../data/data.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage() {
-    print(items[1]["unread"].toString() + items.length.toString());
-    print(items[3]["unread"].toString() + store.length.toString());
-  }
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Montserrat',
-        hintColor: dark_green,
-        primarySwatch: customColorGreen,
-        scaffoldBackgroundColor: green,
-        highlightColor: dark_blue,
-        splashColor: dark_green,
-        textTheme: const TextTheme(
-          subtitle1: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-          ),
-        ),
-      ),
+      theme: Theme(),
       home: Scaffold(
         body: SafeArea(
           child: Column(
@@ -39,24 +24,8 @@ class HomePage extends StatelessWidget {
                     ? const EdgeInsets.all(25.0)
                     : const EdgeInsets.all(10.0),
                 child: ListTile(
-                  leading: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(60),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                            items[0]["img"],
-                          ),
-                        )),
-                  ),
-                  trailing: Wrap(
-                    children: [
-                      Icon(Icons.search),
-                      Icon(Icons.menu),
-                    ],
-                  ),
+                  leading: HeaderImg(),
+                  trailing: HeaderIcon(),
                 ),
               ),
               items.isNotEmpty ? ChatAndStores(size) : Container(),
@@ -64,6 +33,50 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  ThemeData Theme() {
+    return ThemeData(
+      fontFamily: 'Montserrat',
+      hintColor: dark_green,
+      primarySwatch: customColorGreen,
+      scaffoldBackgroundColor: green,
+      highlightColor: dark_blue,
+      splashColor: dark_green,
+      textTheme: const TextTheme(
+        subtitle1: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  Container HeaderImg() {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(60),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(
+              items[0]["img"],
+            ),
+          )),
+    );
+  }
+
+  Wrap HeaderIcon() {
+    return Wrap(
+      children: [
+        Icon(Icons.search),
+        SizedBox(
+          width: 10,
+        ),
+        Icon(Icons.more_vert_outlined),
+      ],
     );
   }
 
@@ -82,7 +95,7 @@ class HomePage extends StatelessWidget {
               Title('Stores'),
               Stores(size),
               Title('Chats'),
-              Chats(),
+              Chats(size),
             ],
           ),
         ),
@@ -134,7 +147,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container Chats() {
+  Container Chats(Size size) {
     return Container(
       margin: const EdgeInsets.only(
         top: 20,
