@@ -6,6 +6,7 @@ import 'pages/home.dart';
 import 'pages/verify.dart';
 
 void main() => runApp(const MyApp());
+
 var green = const Color.fromRGBO(30, 253, 119, 1);
 var dark_green = const Color.fromRGBO(0, 154, 62, 1);
 var dark_blue = const Color.fromRGBO(24, 42, 43, 1);
