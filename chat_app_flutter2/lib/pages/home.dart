@@ -10,34 +10,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String _dogHouse =
+        "https://img.icons8.com/fluency-systems-regular/48/FFFFFF/dog-house.png";
+    String _call =
+        "https://img.icons8.com/fluency-systems-regular/48/FFFFFF/phone-disconnected.png";
+    String _user =
+        "https://img.icons8.com/fluency-systems-regular/48/FFFFFF/user.png";
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Theme(),
       home: Scaffold(
-        bottomNavigationBar: Container(
-          color: darker_blue,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(10),
-              topLeft: Radius.circular(10),
-            ),
-            child: BottomNavigationBar(
-              selectedFontSize: 0,
-              items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: '1'),
-                BottomNavigationBarItem(icon: Icon(Icons.usb), label: '2'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.assignment_ind), label: '3'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.multiline_chart), label: '4'),
-              ],
-              currentIndex: 0,
-              selectedItemColor: Colors.indigo,
-              unselectedItemColor: Colors.indigo,
-              showUnselectedLabels: true,
-            ),
-          ),
-        ),
+        bottomNavigationBar: NavigationBar(_dogHouse, _call, _user),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -60,6 +43,63 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Container NavigationBar(String _dogHouse, String _call, String _user) {
+    return Container(
+      color: darker_blue,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(10),
+          topLeft: Radius.circular(10),
+        ),
+        child: BottomNavigationBar(
+          selectedFontSize: 0,
+          items: [
+            SelectedItem(_dogHouse),
+            UnSelectedItem(_call, 'Call'),
+            UnSelectedItem(_user, 'Contact'),
+          ],
+          currentIndex: 0,
+          showUnselectedLabels: true,
+        ),
+      ),
+    );
+  }
+
+  BottomNavigationBarItem UnSelectedItem(String _call, String label) {
+    return BottomNavigationBarItem(
+        icon: Image.network(
+          _call,
+          width: 28,
+          color: Color.fromRGBO(255, 255, 255, 0.5),
+        ),
+        label: label);
+  }
+
+  BottomNavigationBarItem SelectedItem(String _dogHouse) {
+    return BottomNavigationBarItem(
+        icon: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+              child: Container(
+                width: 15,
+                height: 15,
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(30, 253, 119, 0.5),
+                    borderRadius: BorderRadius.circular(15)),
+                child: null,
+              ), // Widget that is blurred
+            ),
+            Image.network(
+              _dogHouse,
+              width: 28,
+            ),
+          ],
+        ),
+        label: 'Home');
+  }
+
   ThemeData Theme() {
     return ThemeData(
       fontFamily: 'Montserrat',
@@ -68,6 +108,7 @@ class HomePage extends StatelessWidget {
       scaffoldBackgroundColor: green,
       highlightColor: dark_blue,
       splashColor: dark_green,
+      canvasColor: dark_blue,
       textTheme: const TextTheme(
         subtitle1: TextStyle(
           color: Colors.white,
