@@ -1,10 +1,7 @@
-import 'dart:ui';
-
 import 'package:chat_app_flutter2/main.dart';
-import 'package:chat_app_flutter2/screens/chat.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
-
+import '../screens/chats.dart';
 import '../screens/call.dart';
 import '../screens/contact.dart';
 
