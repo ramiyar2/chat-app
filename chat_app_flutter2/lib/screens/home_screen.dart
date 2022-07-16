@@ -26,38 +26,46 @@ class _HomePageState extends State<HomePage> {
     String _user =
         "https://img.icons8.com/fluency-systems-regular/48/FFFFFF/user.png";
 
+    // List<BottomNavigationBarItem> _bottomNavigationBarItemCall = [
+    //   UnSelectedItem(_dogHouse, 'Home'),
+    //   SelectedItem(_call, 'Call'),
+    //   UnSelectedItem(_user, 'Contact'),
+    // ];
+    // List<BottomNavigationBarItem> _bottomNavigationBarItemContact = [
+    //   UnSelectedItem(_dogHouse, 'Home'),
+    //   UnSelectedItem(_call, 'Call'),
+    //   SelectedItem(_user, 'Contact'),
+    // ];
+
+    int bottomSelectedIndex = 0;
+
     PageController pageController = PageController(
       initialPage: 0,
       keepPage: true,
     );
 
-    int bottomSelectedIndex = 0;
-
-    @override
-    void initState() {
-      super.initState();
-    }
-
-    void pageChanged(int index) {
-      setState(() {
-        bottomSelectedIndex = index;
-      });
-    }
-
     void bottomTapped(int index) {
       setState(() {
         bottomSelectedIndex = index;
         pageController.animateToPage(index,
-            duration: Duration(milliseconds: 500), curve: Curves.ease);
+            duration: const Duration(milliseconds: 500), curve: Curves.ease);
       });
     }
+
+    List<BottomNavigationBarItem> _bottomNavigationBarItemChat = [
+      SelectedItem(_dogHouse, 'Home'),
+      UnSelectedItem(_call, 'Call'),
+      UnSelectedItem(_user, 'Contact'),
+    ];
+    List<BottomNavigationBarItem> _bottomNavigationBarItem =
+        _bottomNavigationBarItemChat;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Theme(),
       home: Scaffold(
         bottomNavigationBar: NavigationBar(
-            _dogHouse, _call, _user, bottomSelectedIndex, bottomTapped),
+            _bottomNavigationBarItem, bottomSelectedIndex, bottomTapped),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                   trailing: HeaderIcon(),
                 ),
               ),
-              items.isNotEmpty
+              date.isNotEmpty
                   ? Expanded(
                       child: Container(
                           height: 537,
@@ -81,8 +89,7 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: const BorderRadius.only(
                                   topRight: Radius.circular(40.0),
                                   topLeft: Radius.circular(40.0))),
-                          child:
-                              BluidPageView(pageController, pageChanged, size)))
+                          child: BluidPageView(pageController, size)))
                   : Container(),
             ],
           ),
@@ -91,19 +98,30 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  PageView BluidPageView(
-      PageController pageController, void pageChanged(int index), Size size) {
+  PageView BluidPageView(PageController pageController, Size size) {
     return PageView(
       controller: pageController,
-      onPageChanged: (index) {
-        pageChanged(index);
-      },
-      children: <Widget>[Chat(), Call(), Contact()],
+      children: <Widget>[
+        chats.isNotEmpty ? Chat() : FiledLoadDate(),
+        call.isNotEmpty ? const Call() : FiledLoadDate(),
+        contact.isNotEmpty ? const Contact() : FiledLoadDate()
+      ],
     );
   }
 
-  Container NavigationBar(String _dogHouse, String _call, String _user,
-      int select, Function bottomTapped) {
+  Center FiledLoadDate() {
+    return const Center(
+      child: const Text(
+        'field to load date from server',
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  Container NavigationBar(
+      List<BottomNavigationBarItem> _bottomNavigationBarItem,
+      int bottomSelectedIndex,
+      void bottomTapped(int index)) {
     return Container(
       color: darker_blue,
       child: ClipRRect(
@@ -113,32 +131,29 @@ class _HomePageState extends State<HomePage> {
         ),
         child: BottomNavigationBar(
           selectedFontSize: 0,
-          items: [
-            SelectedItem(_dogHouse),
-            UnSelectedItem(_call, 'Call'),
-            UnSelectedItem(_user, 'Contact'),
-          ],
-          currentIndex: select,
+          items: _bottomNavigationBarItem,
+          currentIndex: bottomSelectedIndex,
           onTap: (index) {
             bottomTapped(index);
           },
           showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
         ),
       ),
     );
   }
 
-  BottomNavigationBarItem UnSelectedItem(String _call, String label) {
+  BottomNavigationBarItem UnSelectedItem(String _img, String label) {
     return BottomNavigationBarItem(
         icon: Image.network(
-          _call,
+          _img,
           width: 28,
-          color: Color.fromRGBO(255, 255, 255, 0.5),
+          color: const Color.fromRGBO(255, 255, 255, 0.5),
         ),
         label: label);
   }
 
-  BottomNavigationBarItem SelectedItem(String _dogHouse) {
+  BottomNavigationBarItem SelectedItem(String icon, String label) {
     return BottomNavigationBarItem(
         icon: Stack(
           alignment: Alignment.bottomRight,
@@ -155,12 +170,12 @@ class _HomePageState extends State<HomePage> {
               ), // Widget that is blurred
             ),
             Image.network(
-              _dogHouse,
+              icon,
               width: 28,
             ),
           ],
         ),
-        label: 'Home');
+        label: label);
   }
 
   ThemeData Theme() {
@@ -190,7 +205,7 @@ class _HomePageState extends State<HomePage> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: NetworkImage(
-              items[0]["img"],
+              chats[0]["img"],
             ),
           )),
     );
@@ -199,11 +214,11 @@ class _HomePageState extends State<HomePage> {
   Wrap HeaderIcon() {
     return Wrap(
       children: [
-        Icon(Icons.search),
-        SizedBox(
+        const Icon(Icons.search),
+        const SizedBox(
           width: 10,
         ),
-        Icon(Icons.more_vert_outlined),
+        const Icon(Icons.more_vert_outlined),
       ],
     );
   }

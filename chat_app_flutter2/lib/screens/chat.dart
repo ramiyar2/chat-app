@@ -74,7 +74,7 @@ Container Chats(Size size) {
     ),
     height: 600,
     child: ListView.builder(
-      itemCount: items.length,
+      itemCount: chats.length,
       itemBuilder: (BuildContext context, int index) {
         return Card(
           color: dark_blue,
@@ -86,11 +86,11 @@ Container Chats(Size size) {
             ),
           ),
           child: ListTile(
-            title: Text(items[index]["userName"]),
+            title: Text(chats[index]["userName"]),
             subtitle: Text(
-              items[index]["massage"],
+              chats[index]["massage"],
               style: TextStyle(
-                color: items[index]["unread"] == null
+                color: chats[index]["unread"] == null
                     ? Color.fromRGBO(255, 255, 255, 0.5)
                     : green,
               ),
@@ -100,9 +100,9 @@ Container Chats(Size size) {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  items[index]["time"].toString(),
+                  chats[index]["time"].toString(),
                   style: TextStyle(
-                    color: items[index]["unread"] == null
+                    color: chats[index]["unread"] == null
                         ? Color.fromRGBO(255, 255, 255, 0.5)
                         : green,
                   ),
@@ -113,12 +113,12 @@ Container Chats(Size size) {
                 Container(
                   width: 25,
                   height: 25,
-                  child: items[index]["unread"] == null
+                  child: chats[index]["unread"] == null
                       ? Container()
                       : CircleAvatar(
                           backgroundColor: green,
                           child: Text(
-                            items[index]["unread"].toString(),
+                            chats[index]["unread"].toString(),
                             style: TextStyle(color: darker_blue),
                           ),
                         ),
@@ -133,7 +133,7 @@ Container Chats(Size size) {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      items[index]["img"],
+                      chats[index]["img"],
                     ),
                   )),
             ),

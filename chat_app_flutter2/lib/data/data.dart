@@ -1,4 +1,4 @@
-List<Map> items = [
+List<Map> chats = [
   {
     "userId": 1,
     "id": 1,
@@ -182,3 +182,6 @@ List<Map> store = [
     "massage": "Hi"
   }
 ];
+List<Map> call = [];
+List<Map> contact = [];
+List<List<Map>> date = [chats, store];
