@@ -182,6 +182,42 @@ List<Map> store = [
     "massage": "Hi"
   }
 ];
-List<Map> call = [];
-List<Map> contact = [];
+List<Map> call = [
+  {
+    "userId": 1,
+    "id": 1,
+    "userName": "Olivia",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "Today 10:30 PM",
+    "answered": true
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "userName": "Aadeel",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "Yesterday",
+    "answered": false
+  }
+];
+List<Map> contact = [
+  {
+    "userId": 1,
+    "id": 1,
+    "userName": "Olivia",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "Now",
+    "unread": 1,
+    "massage": "ok , c u tonight?"
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "userName": "Aadeel",
+    "img": "http://placeimg.com/640/480/any",
+    "time": "10:10 PM",
+    "unread": 3,
+    "massage": "how are you"
+  }
+];
 List<List<Map>> date = [chats, store];
