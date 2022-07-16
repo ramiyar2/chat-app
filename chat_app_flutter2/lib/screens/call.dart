@@ -8,8 +8,6 @@ class Call extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     String _call =
         "https://img.icons8.com/fluency-systems-regular/48/FFFFFF/phone-disconnected.png";
     String _up =
