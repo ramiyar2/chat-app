@@ -70,13 +70,14 @@ Container Title(String title) {
 Container Chats(Size size) {
   return Container(
     margin: const EdgeInsets.only(
-      top: 20,
+      top: 10,
     ),
     height: 600,
     child: ListView.builder(
       itemCount: chats.length,
       itemBuilder: (BuildContext context, int index) {
         return Card(
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           color: dark_blue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
