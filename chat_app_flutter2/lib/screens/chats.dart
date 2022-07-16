@@ -81,7 +81,9 @@ Container Chats(Size size) {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
             side: BorderSide(
-              color: green,
+              color: chats[index]["unread"] == null
+                  ? Color.fromARGB(0, 0, 0, 0)
+                  : green,
               width: 2.0,
             ),
           ),

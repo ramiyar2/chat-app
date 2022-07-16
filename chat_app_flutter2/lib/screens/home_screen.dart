@@ -51,8 +51,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     List<BottomNavigationBarItem> _bottomNavigationBarItemChat = [
-      SelectedItem(_dogHouse, 'Home'),
-      UnSelectedItem(_call, 'Call'),
+      UnSelectedItem(_dogHouse, 'Home'),
+      SelectedItem(_call, 'Call'),
       UnSelectedItem(_user, 'Contact'),
     ];
     List<BottomNavigationBarItem> _bottomNavigationBarItem =
