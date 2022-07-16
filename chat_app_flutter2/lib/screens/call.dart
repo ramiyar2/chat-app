@@ -15,13 +15,11 @@ class Call extends StatelessWidget {
     String _down =
         "https://img.icons8.com/material-rounded/24/000000/down3.png";
 
-    return SingleChildScrollView(
-      child: Wrap(
-        children: [
-          Title('Stores'),
-          CallsList(_up, _down, _call),
-        ],
-      ),
+    return Wrap(
+      children: [
+        Title('Stores'),
+        CallsList(_up, _down, _call),
+      ],
     );
   }
 
