@@ -9,8 +9,10 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Text('data'),
+      body: SafeArea(
+        child: Container(
+          child: Text('data'),
+        ),
       ),
     );
   }
