@@ -1,10 +1,10 @@
-import 'package:chat_app_flutter2/pages/signin.dart';
+import 'package:chat_app_flutter2/sigin/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 
 //import 'pages/home.dart';
 import 'screens/home_screen.dart';
-import 'pages/verify.dart';
+import 'sigin/verify.dart';
 
 void main() => runApp(const MyApp());
 
