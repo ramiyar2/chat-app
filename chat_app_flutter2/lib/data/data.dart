@@ -258,3 +258,20 @@ List<Map> contact = [
   }
 ];
 List<List<Map>> date = [chats, store];
+
+List<Map> yesterday = [
+  {"mass": "hey , emma", "send": true, "time": "10:11 PM"},
+  {"mass": "When will the meeting be?", "send": true, "time": "10:12 PM"},
+  {
+    "mass": "Which meeting are you talking about?",
+    "send": false,
+    "time": "11:30 PM"
+  },
+  {"mass": "EMF meeting", "send": true, "time": "11:59 PM"}
+];
+List<Map> today = [
+  {"mass": "at 10 PM", "send": false, "Time": "01:30 PM"},
+  {"mass": "Today?", "send": true, "Time": "05:14 PM"},
+  {"mass": "yes today is meeting", "send": false, "Time": "05:14 PM"}
+];
+List<List<Map>> chatMass = [yesterday, today];
