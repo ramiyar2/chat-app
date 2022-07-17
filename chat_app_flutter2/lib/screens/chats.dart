@@ -1,6 +1,7 @@
 import 'package:chat_app_flutter2/main.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
+import '../pages/chat_page.dart';
 
 class Chat extends StatelessWidget {
   @override
@@ -89,6 +90,7 @@ Container Chats(Size size) {
             ),
           ),
           child: ListTile(
+            onTap: () => ChatPage(),
             title: Text(chats[index]["userName"]),
             subtitle: Text(
               chats[index]["massage"],
