@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "877544420546",
+    "project_id": "chat-app-d365c",
+    "storage_bucket": "chat-app-d365c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877544420546:android:d8e22926f66fc3c6ce775b",
+        "android_client_info": {
+          "package_name": "com.ramiyar.chat_app_flutter2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "877544420546-6u39345fpppso3te6on7ng977cqdhumf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYyehmTGVIEIFKGnEvjugG1X4fg4CnW54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "877544420546-6u39345fpppso3te6on7ng977cqdhumf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
