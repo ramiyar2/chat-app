@@ -25,9 +25,7 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   var inputName = TextEditingController();
-
   var inputNumber = TextEditingController();
-
   var strInputNumber = ' ';
   var strInputName = ' ';
   bool NumberIsEmpty = true;
@@ -121,7 +119,6 @@ class _SigninState extends State<Signin> {
                   const SizedBox(
                     height: 40,
                   ),
-
                   //ForwardButtom
                   ForwardButtom(context),
                 ],
