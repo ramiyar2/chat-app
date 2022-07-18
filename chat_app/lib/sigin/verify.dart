@@ -17,8 +17,8 @@ class Verify extends StatefulWidget {
     dark_blue = c3;
     darker_blue = c4;
     this.number = number;
+    print(number);
   }
-
   @override
   State<Verify> createState() => _VerifyState();
 }
@@ -156,7 +156,7 @@ class _VerifyState extends State<Verify> {
 
   _VerfiyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '+1${widget.number}',
+        phoneNumber: '+16167993000',
         verificationCompleted: (PhoneAuthCredential credential) async {
           await FirebaseAuth.instance
               .signInWithCredential(credential)
@@ -182,7 +182,7 @@ class _VerifyState extends State<Verify> {
             _verificationCode = _verficationId;
           });
         },
-        timeout: Duration(seconds: 10));
+        timeout: Duration(seconds: 120));
   }
 
   @override

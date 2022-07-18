@@ -2,6 +2,7 @@
 
 import 'package:chat_app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'verify.dart';
@@ -27,7 +28,8 @@ class _SigninState extends State<Signin> {
   var inputName = TextEditingController();
   var inputNumber = TextEditingController();
   String strInputNumber = ' ';
-  var strInputName = ' ';
+  String countryCode = '964';
+  String strInputName = ' ';
   bool NumberIsEmpty = true;
   bool NameIsEmpty = true;
 
@@ -115,6 +117,12 @@ class _SigninState extends State<Signin> {
                     onChanged: (phone) {
                       print(phone.completeNumber);
                     },
+                    onCountryChanged: (value) {
+                      setState(() {
+                        countryCode = value.dialCode;
+                      });
+                      print(countryCode);
+                    },
                   ),
                   const SizedBox(
                     height: 40,
@@ -146,11 +154,11 @@ class _SigninState extends State<Signin> {
           ),
           onPressed: () {
             setState(() {
-              strInputNumber = inputNumber.text;
-              strInputNumber.isEmpty
-                  ? NumberIsEmpty = true
-                  : NumberIsEmpty = false;
+              strInputNumber = '+$countryCode${inputNumber.text}';
             });
+            strInputNumber.isEmpty
+                ? NumberIsEmpty = true
+                : NumberIsEmpty = false;
             if (NumberIsEmpty) {
               ErrorAlert(context);
             } else {
@@ -173,7 +181,7 @@ class _SigninState extends State<Signin> {
               child: AlertDialog(
                 title: Text('Are you sure !'),
                 content: Column(children: [
-                  Text('Are you sure that the number +964 ' +
+                  Text('Are you sure that the number ' +
                       strInputNumber +
                       ' is your number'),
                   SizedBox(
