@@ -1,7 +1,7 @@
-import 'package:chat_app_flutter2/data/data.dart';
+import 'package:chat_app/data/data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_app_flutter2/main.dart';
+import 'package:chat_app/main.dart';
 
 class Call extends StatelessWidget {
   const Call({Key? key}) : super(key: key);
