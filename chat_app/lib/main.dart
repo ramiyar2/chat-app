@@ -1,12 +1,18 @@
 import 'package:chat_app/sigin/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 //import 'pages/home.dart';
 import 'screens/home_screen.dart';
 import 'sigin/verify.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
+}
 
 var green = const Color.fromRGBO(30, 253, 119, 1);
 var dark_green = const Color.fromRGBO(0, 154, 62, 1);
