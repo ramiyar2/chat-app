@@ -9,12 +9,14 @@ class Verify extends StatefulWidget {
   var dark_green;
   var dark_blue;
   var darker_blue;
+  late String number;
 
-  Verify(c1, c2, c3, c4, {Key? key}) : super(key: key) {
+  Verify(c1, c2, c3, c4, String number, {Key? key}) : super(key: key) {
     green = c1;
     dark_green = c2;
     dark_blue = c3;
     darker_blue = c4;
+    this.number = number;
   }
 
   @override
@@ -22,11 +24,8 @@ class Verify extends StatefulWidget {
 }
 
 class _VerifyState extends State<Verify> {
-  var number = 'null';
-
   late String strInputVerfiyText;
 
-  late String rightInputVerfiyText = '123456';
   late String _verificationCode;
   var _verifyConroller = TextEditingController();
 
@@ -57,7 +56,7 @@ class _VerifyState extends State<Verify> {
                   height: 40,
                 ),
                 Text(
-                  'Enter the code that we sent to \n' + number,
+                  'Enter the code that we sent to \n' + widget.number,
                   style: TextStyle(fontSize: 13, color: widget.green),
                 ),
                 const SizedBox(
@@ -67,20 +66,7 @@ class _VerifyState extends State<Verify> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   length: 6,
                   controller: _verifyConroller,
-                  onSubmitted: (pin) async {
-                    try {
-                      await FirebaseAuth.instance
-                          .signInWithCredential(PhoneAuthProvider.credential(
-                              verificationId: _verificationCode, smsCode: pin))
-                          .then((value) async {
-                        if (value.user != null) {
-                          print('Home Page');
-                        }
-                      });
-                    } catch (e) {
-                      FocusScope.of(context).unfocus();
-                    }
-                  },
+                  onSubmitted: (pin) => _CheckCode(pin),
                   defaultPinTheme: MyPinTheme(widget.dark_blue),
                   focusedPinTheme: MyPinTheme(widget.green),
                 ),
@@ -126,6 +112,23 @@ class _VerifyState extends State<Verify> {
     );
   }
 
+  _CheckCode(String pin) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithCredential(PhoneAuthProvider.credential(
+              verificationId: _verificationCode, smsCode: pin))
+          .then((value) async {
+        if (value.user != null) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+        }
+      });
+    } catch (e) {
+      FocusScope.of(context).unfocus();
+      print('wrong');
+    }
+  }
+
   Center ForwardButtom(BuildContext context) {
     return Center(
       child: Container(
@@ -144,22 +147,25 @@ class _VerifyState extends State<Verify> {
           ),
           onPressed: () {
             strInputVerfiyText = _verifyConroller.text;
-            print(strInputVerfiyText);
+            _CheckCode(strInputVerfiyText);
           },
         ),
       ),
     );
   }
 
-  _VerfiyPhoneNumber() async {
+  _VerfiyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '+17835106866',
+        phoneNumber: '+1${widget.number}',
         verificationCompleted: (PhoneAuthCredential credential) async {
           await FirebaseAuth.instance
               .signInWithCredential(credential)
               .then((value) async {
             if (value.user != null) {
-              print('Home Page');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => HomePage()));
             }
           });
         },
@@ -176,7 +182,13 @@ class _VerifyState extends State<Verify> {
             _verificationCode = _verficationId;
           });
         },
-        timeout: Duration(minutes: 20));
+        timeout: Duration(seconds: 10));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _VerfiyPhone();
   }
 }
 

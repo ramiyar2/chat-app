@@ -26,7 +26,7 @@ class Signin extends StatefulWidget {
 class _SigninState extends State<Signin> {
   var inputName = TextEditingController();
   var inputNumber = TextEditingController();
-  var strInputNumber = ' ';
+  String strInputNumber = ' ';
   var strInputName = ' ';
   bool NumberIsEmpty = true;
   bool NameIsEmpty = true;
@@ -197,7 +197,8 @@ class _SigninState extends State<Signin> {
                                       green,
                                       dark_green,
                                       dark_blue,
-                                      darker_blue)));
+                                      darker_blue,
+                                      strInputNumber)));
                         },
                         child: Text('Yes'),
                       )
