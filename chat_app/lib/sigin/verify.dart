@@ -1,21 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 
-class Verify extends StatelessWidget {
+class Verify extends StatefulWidget {
   var green;
   var dark_green;
   var dark_blue;
   var darker_blue;
-  var number = 'null';
-  List<String> strInputVerfiyText = ['', '', '', '', '', ''];
-  List<String> rightInputVerfiyText = ['1', '2', '3', '4', '5', '6'];
-  List _textEditingController = [
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController()
-  ];
 
   Verify(c1, c2, c3, c4, {Key? key}) : super(key: key) {
     green = c1;
@@ -23,6 +16,20 @@ class Verify extends StatelessWidget {
     dark_blue = c3;
     darker_blue = c4;
   }
+
+  @override
+  State<Verify> createState() => _VerifyState();
+}
+
+class _VerifyState extends State<Verify> {
+  var number = 'null';
+
+  late String strInputVerfiyText;
+
+  late String rightInputVerfiyText = '123456';
+  late String _verificationCode;
+  var _verifyConroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,37 +52,51 @@ class Verify extends StatelessWidget {
                 const SizedBox(
                   height: 230,
                 ),
-                Logo(green: green),
+                Logo(green: widget.green),
                 const SizedBox(
                   height: 40,
                 ),
                 Text(
                   'Enter the code that we sent to \n' + number,
-                  style: TextStyle(fontSize: 13, color: green),
+                  style: TextStyle(fontSize: 13, color: widget.green),
                 ),
                 const SizedBox(
                   height: 40,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    for (int i = 0; i < _textEditingController.length; i++)
-                      VerfiyTextField(i, context),
-                  ],
+                Pinput(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  length: 6,
+                  controller: _verifyConroller,
+                  onSubmitted: (pin) async {
+                    try {
+                      await FirebaseAuth.instance
+                          .signInWithCredential(PhoneAuthProvider.credential(
+                              verificationId: _verificationCode, smsCode: pin))
+                          .then((value) async {
+                        if (value.user != null) {
+                          print('Home Page');
+                        }
+                      });
+                    } catch (e) {
+                      FocusScope.of(context).unfocus();
+                    }
+                  },
+                  defaultPinTheme: MyPinTheme(widget.dark_blue),
+                  focusedPinTheme: MyPinTheme(widget.green),
                 ),
                 const SizedBox(
                   height: 40,
                 ),
                 Text(
                   'Edit the number',
-                  style: TextStyle(fontSize: 13, color: green),
+                  style: TextStyle(fontSize: 13, color: widget.green),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Text(
                   'Resend code',
-                  style: TextStyle(fontSize: 13, color: green),
+                  style: TextStyle(fontSize: 13, color: widget.green),
                 ),
                 const SizedBox(
                   height: 40,
@@ -90,40 +111,18 @@ class Verify extends StatelessWidget {
     );
   }
 
-  // Text field
-  SizedBox VerfiyTextField(int i, ctx) {
-    int index = i;
-    return SizedBox(
+  PinTheme MyPinTheme(Color color) {
+    return PinTheme(
       width: 40,
       height: 55,
-      child: TextField(
-        controller: _textEditingController[index],
-        decoration: verfiyInputDecoration(),
-        keyboardType: TextInputType.phone,
-        maxLength: 1,
-        textAlign: TextAlign.end,
-        onChanged: (value) {
-          if (value.length == 1 && i != _textEditingController.length)
-            FocusScope.of(ctx).nextFocus();
-          else
-            FocusScope.of(ctx).unfocus();
-        },
-        style: TextStyle(
-          color: green,
-        ),
+      textStyle: TextStyle(
+        color: widget.green,
+        fontSize: 20,
       ),
-    );
-  }
-
-  InputDecoration verfiyInputDecoration() {
-    return InputDecoration(
-      counterText: '',
-      enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: dark_blue, width: 2.0),
-          borderRadius: BorderRadius.circular(7)),
-      focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: green, width: 2.0),
-          borderRadius: BorderRadius.circular(7)),
+      decoration: BoxDecoration(
+        border: Border.all(color: color, width: 2.0),
+        borderRadius: BorderRadius.circular(7),
+      ),
     );
   }
 
@@ -134,31 +133,50 @@ class Verify extends StatelessWidget {
         width: 66,
         height: 66,
         decoration: BoxDecoration(
-          color: green,
+          color: widget.green,
           borderRadius: BorderRadius.circular(33),
         ),
         child: IconButton(
           icon: Icon(
             Icons.arrow_forward_rounded,
-            color: darker_blue,
+            color: widget.darker_blue,
             size: 33,
           ),
           onPressed: () {
-            for (int i = 0; i <= 5; i++) {
-              strInputVerfiyText[i] = _textEditingController[i].text;
-            }
-
-            if (strInputVerfiyText
-                .any((item) => rightInputVerfiyText.contains(item))) {
-              print('ok');
-            } else {
-              print(strInputVerfiyText);
-              print(rightInputVerfiyText);
-            }
+            strInputVerfiyText = _verifyConroller.text;
+            print(strInputVerfiyText);
           },
         ),
       ),
     );
+  }
+
+  _VerfiyPhoneNumber() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: '+17835106866',
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await FirebaseAuth.instance
+              .signInWithCredential(credential)
+              .then((value) async {
+            if (value.user != null) {
+              print('Home Page');
+            }
+          });
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print(e.message);
+        },
+        codeSent: (String _verficationId, int? resendToken) {
+          setState(() {
+            _verificationCode = _verficationId;
+          });
+        },
+        codeAutoRetrievalTimeout: (String _verficationId) {
+          setState(() {
+            _verificationCode = _verficationId;
+          });
+        },
+        timeout: Duration(minutes: 20));
   }
 }
 
