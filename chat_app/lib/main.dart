@@ -54,7 +54,7 @@ class _SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return Signin(green, dark_green, dark_blue, darker_blue);
-    return HomePage();
+    return Signin(green, dark_green, dark_blue, darker_blue);
   }
 }
 
