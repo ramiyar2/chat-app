@@ -85,7 +85,7 @@ class _VerifyState extends State<Verify> {
                       'Edit the number',
                       style: TextStyle(
                         fontSize: 13,
-                        color: green,
+                        color: isButtonDisabled ? green_op : green,
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -104,7 +104,7 @@ class _VerifyState extends State<Verify> {
                       'Resend code',
                       style: TextStyle(
                         fontSize: 13,
-                        color: green,
+                        color: isButtonDisabled ? green_op : green,
                         decoration: TextDecoration.underline,
                       ),
                     ),
