@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../screens/home_screen.dart';
@@ -20,10 +22,20 @@ class _VerifyState extends State<Verify> {
   late String strInputVerfiyText;
   bool showSpiner = false;
   late String _verificationCode;
+  bool isButtonDisabled = true;
+  bool isTimerDisabled = false;
   var _verifyConroller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    if (!isTimerDisabled) {
+      Timer(Duration(seconds: 20), () {
+        setState(() {
+          isTimerDisabled = true;
+          isButtonDisabled = false;
+          print('isButtonDisabled' + isButtonDisabled.toString());
+        });
+      });
+    }
     return Scaffold(
       appBar: null,
       body: SafeArea(
@@ -55,7 +67,7 @@ class _VerifyState extends State<Verify> {
                     style: TextStyle(fontSize: 13, color: green),
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
                   Pinput(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,22 +77,41 @@ class _VerifyState extends State<Verify> {
                     defaultPinTheme: MyPinTheme(dark_blue),
                     focusedPinTheme: MyPinTheme(green),
                   ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    'Edit the number',
-                    style: TextStyle(fontSize: 13, color: green),
-                  ),
-                  const SizedBox(
+                  SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Resend code',
-                    style: TextStyle(fontSize: 13, color: green),
+                  TextButton(
+                    child: Text(
+                      'Edit the number',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: green,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    onPressed: isButtonDisabled == false
+                        ? () {
+                            print(
+                                'Disabled -------------------------------------------');
+                          }
+                        : () {
+                            print(
+                                'Enabled-------------------------------------------');
+                          },
                   ),
-                  const SizedBox(
-                    height: 40,
+                  TextButton(
+                    child: Text(
+                      'Resend code',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: green,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   //ForwardButtom
                   ForwardButtom(context),
@@ -194,7 +225,6 @@ class _VerifyState extends State<Verify> {
   @override
   void initState() {
     super.initState();
-    print('hi ${widget.number}  -----------------------------------');
     _VerfiyPhone();
   }
 }

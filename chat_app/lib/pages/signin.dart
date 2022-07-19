@@ -188,7 +188,7 @@ class _SigninState extends State<Signin> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
