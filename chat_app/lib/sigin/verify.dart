@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import '../screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Verify extends StatefulWidget {
   var green;
@@ -25,7 +26,7 @@ class Verify extends StatefulWidget {
 
 class _VerifyState extends State<Verify> {
   late String strInputVerfiyText;
-
+  bool showSpiner = false;
   late String _verificationCode;
   var _verifyConroller = TextEditingController();
 
@@ -34,62 +35,65 @@ class _VerifyState extends State<Verify> {
     return Scaffold(
       appBar: null,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/img/background.png"),
-                fit: BoxFit.fill,
+        child: ModalProgressHUD(
+          inAsyncCall: showSpiner,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/img/background.png"),
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 230,
-                ),
-                Logo(green: widget.green),
-                const SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  'Enter the code that we sent to \n' + widget.number,
-                  style: TextStyle(fontSize: 13, color: widget.green),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Pinput(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  length: 6,
-                  controller: _verifyConroller,
-                  onSubmitted: (pin) => _CheckCode(pin),
-                  defaultPinTheme: MyPinTheme(widget.dark_blue),
-                  focusedPinTheme: MyPinTheme(widget.green),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  'Edit the number',
-                  style: TextStyle(fontSize: 13, color: widget.green),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Resend code',
-                  style: TextStyle(fontSize: 13, color: widget.green),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                //ForwardButtom
-                ForwardButtom(context),
-              ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 230,
+                  ),
+                  Logo(green: widget.green),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    'Enter the code that we sent to \n' + widget.number,
+                    style: TextStyle(fontSize: 13, color: widget.green),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Pinput(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    length: 6,
+                    controller: _verifyConroller,
+                    onSubmitted: (pin) => _CheckCode(pin),
+                    defaultPinTheme: MyPinTheme(widget.dark_blue),
+                    focusedPinTheme: MyPinTheme(widget.green),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(
+                    'Edit the number',
+                    style: TextStyle(fontSize: 13, color: widget.green),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Resend code',
+                    style: TextStyle(fontSize: 13, color: widget.green),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  //ForwardButtom
+                  ForwardButtom(context),
+                ],
+              ),
             ),
           ),
         ),
@@ -122,6 +126,9 @@ class _VerifyState extends State<Verify> {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (BuildContext context) => HomePage()));
         }
+        setState(() {
+          showSpiner = false;
+        });
       });
     } catch (e) {
       FocusScope.of(context).unfocus();
@@ -146,6 +153,9 @@ class _VerifyState extends State<Verify> {
             size: 33,
           ),
           onPressed: () {
+            setState(() {
+              showSpiner = true;
+            });
             strInputVerfiyText = _verifyConroller.text;
             _CheckCode(strInputVerfiyText);
           },
