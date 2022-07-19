@@ -5,6 +5,7 @@ import '../data/data.dart';
 import '../screens/chats.dart';
 import '../screens/call.dart';
 import '../screens/contact.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -14,6 +15,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _auth = FirebaseAuth.instance;
+  late User signInUser;
+  void GetCurrentUser() {
+    try {
+      final currentUser = _auth.currentUser;
+      if (currentUser != null) {
+        signInUser = currentUser;
+        print(signInUser);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,7 +49,6 @@ class _HomePageState extends State<HomePage> {
     //   UnSelectedItem(_call, 'Call'),
     //   SelectedItem(_user, 'Contact'),
     // ];
-
     int bottomSelectedIndex = 0;
 
     PageController pageController = PageController(
@@ -212,11 +226,20 @@ class _HomePageState extends State<HomePage> {
   Wrap HeaderIcon() {
     return Wrap(
       children: [
-        const Icon(Icons.search),
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {},
+        ),
         const SizedBox(
           width: 10,
         ),
-        const Icon(Icons.more_vert_outlined),
+        IconButton(
+          icon: Icon(Icons.more_vert_outlined),
+          onPressed: () {
+            _auth.signOut();
+            Navigator.pop(context);
+          },
+        ),
       ],
     );
   }
