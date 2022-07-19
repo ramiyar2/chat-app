@@ -5,14 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../data/color.dart';
+import '../widget/logo.dart';
 
 class Verify extends StatefulWidget {
   late String number;
-
-  Verify(String number, {Key? key}) : super(key: key) {
-    this.number = number;
-    print(number);
-  }
   @override
   State<Verify> createState() => _VerifyState();
 }
@@ -25,6 +21,10 @@ class _VerifyState extends State<Verify> {
 
   @override
   Widget build(BuildContext context) {
+    final strNumber = ModalRoute.of(context)!.settings.arguments as String;
+    setState(() {
+      widget.number = strNumber.toString();
+    });
     return Scaffold(
       appBar: null,
       body: SafeArea(
@@ -47,7 +47,7 @@ class _VerifyState extends State<Verify> {
                   const SizedBox(
                     height: 230,
                   ),
-                  Logo(green: green),
+                  Logo(color: green),
                   const SizedBox(
                     height: 40,
                   ),
@@ -193,38 +193,5 @@ class _VerifyState extends State<Verify> {
   void initState() {
     super.initState();
     _VerfiyPhone();
-  }
-}
-
-// logo
-class Logo extends StatelessWidget {
-  const Logo({
-    Key? key,
-    required this.green,
-  }) : super(key: key);
-
-  final green;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/img/myLogo.png',
-          width: 100,
-          height: 100,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Text(
-          'Chat',
-          style: TextStyle(
-            fontSize: 31.5,
-            color: green,
-          ),
-        )
-      ],
-    );
   }
 }

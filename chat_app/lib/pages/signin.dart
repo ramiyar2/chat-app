@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'verify.dart';
 import '../data/color.dart';
+import '../widget/logo.dart';
 
 class Signin extends StatefulWidget {
   @override
@@ -45,7 +45,7 @@ class _SigninState extends State<Signin> {
                   const SizedBox(
                     height: 230,
                   ),
-                  Logo(green: green),
+                  Logo(color: green),
                   const SizedBox(
                     height: 40,
                   ),
@@ -187,11 +187,8 @@ class _SigninState extends State<Signin> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      Verify(strInputNumber)));
+                          Navigator.pushNamed(context, 'Verfiy',
+                              arguments: strInputNumber);
                         },
                         child: Text('Yes'),
                       )
@@ -233,37 +230,5 @@ class _SigninState extends State<Signin> {
             ),
           );
         });
-  }
-}
-
-class Logo extends StatelessWidget {
-  const Logo({
-    Key? key,
-    required this.green,
-  }) : super(key: key);
-
-  final green;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/img/myLogo.png',
-          width: 100,
-          height: 100,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Text(
-          'Chat',
-          style: TextStyle(
-            fontSize: 31.5,
-            color: green,
-          ),
-        )
-      ],
-    );
   }
 }

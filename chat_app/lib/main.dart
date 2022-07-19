@@ -1,3 +1,4 @@
+import 'package:chat_app/data/routes.dart';
 import 'package:chat_app/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
@@ -24,15 +25,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeData,
       initialRoute: '/',
-      routes: {
-        '/': (context) => const _SplahPage(),
-      },
+      routes: routes,
     );
   }
 }
 
-class _SplahPage extends StatelessWidget {
-  const _SplahPage({Key? key}) : super(key: key);
+class SplahPage extends StatelessWidget {
+  const SplahPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return const SplashScreen();
@@ -44,7 +43,7 @@ class _SigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Signin(green, dark_green, dark_blue, darker_blue);
+    // return Signin();
     return Signin();
   }
 }
@@ -81,19 +80,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
-MaterialColor customColorGreen = MaterialColor(
-  Color.fromRGBO(30, 253, 119, 1).value,
-  <int, Color>{
-    50: Color.fromRGBO(30, 253, 119, 0.1),
-    100: Color.fromRGBO(30, 253, 119, 0.2),
-    200: Color.fromRGBO(30, 253, 119, 0.3),
-    300: Color.fromRGBO(30, 253, 119, 0.4),
-    400: Color.fromRGBO(30, 253, 119, 0.5),
-    500: Color.fromRGBO(30, 253, 119, 0.6),
-    600: Color.fromRGBO(30, 253, 119, 0.7),
-    700: Color.fromRGBO(30, 253, 119, 0.8),
-    800: Color.fromRGBO(30, 253, 119, 0.9),
-    900: Color.fromRGBO(30, 253, 119, 1),
-  },
-);
