@@ -162,10 +162,11 @@ class _VerifyState extends State<Verify> {
               .signInWithCredential(credential)
               .then((value) async {
             if (value.user != null) {
-              Navigator.pushReplacement(
+              Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage()));
+                      builder: (BuildContext context) => HomePage()),
+                  (route) => false);
             }
           });
         },
