@@ -9,6 +9,9 @@ import '../widget/logo.dart';
 
 class Verify extends StatefulWidget {
   late String number;
+  Verify(number) {
+    this.number = number;
+  }
   @override
   State<Verify> createState() => _VerifyState();
 }
@@ -21,10 +24,6 @@ class _VerifyState extends State<Verify> {
 
   @override
   Widget build(BuildContext context) {
-    final strNumber = ModalRoute.of(context)!.settings.arguments as String;
-    setState(() {
-      widget.number = strNumber.toString();
-    });
     return Scaffold(
       appBar: null,
       body: SafeArea(
@@ -124,6 +123,9 @@ class _VerifyState extends State<Verify> {
         });
       });
     } catch (e) {
+      setState(() {
+        showSpiner = false;
+      });
       FocusScope.of(context).unfocus();
       print('wrong');
     }
@@ -192,6 +194,7 @@ class _VerifyState extends State<Verify> {
   @override
   void initState() {
     super.initState();
+    print('hi ${widget.number}  -----------------------------------');
     _VerfiyPhone();
   }
 }

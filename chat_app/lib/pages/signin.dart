@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:chat_app/main.dart';
+import 'package:chat_app/pages/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
@@ -187,8 +188,11 @@ class _SigninState extends State<Signin> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'Verfiy',
-                              arguments: strInputNumber);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Verify(strInputNumber)));
                         },
                         child: Text('Yes'),
                       )

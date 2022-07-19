@@ -5,6 +5,4 @@ import '../pages/verify.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   '/': (context) => SplahPage(),
-  'Sigin': (context) => Signin(),
-  'Verfiy': (context) => Verify(),
 };
