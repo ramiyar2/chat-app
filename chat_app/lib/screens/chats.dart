@@ -1,7 +1,7 @@
 import '../data/color.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
-import 'chat_page.dart';
+import 'pages/chat_page.dart';
 
 class Chat extends StatelessWidget {
   @override
