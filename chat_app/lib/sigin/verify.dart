@@ -156,7 +156,7 @@ class _VerifyState extends State<Verify> {
 
   _VerfiyPhone() async {
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '+16167993000',
+        phoneNumber: widget.number,
         verificationCompleted: (PhoneAuthCredential credential) async {
           await FirebaseAuth.instance
               .signInWithCredential(credential)
