@@ -6,20 +6,9 @@ import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'verify.dart';
+import '../data/color.dart';
 
 class Signin extends StatefulWidget {
-  var green;
-  var dark_green;
-  var dark_blue;
-  var darker_blue;
-
-  Signin(c1, c2, c3, c4, {Key? key}) : super(key: key) {
-    green = c1;
-    dark_green = c2;
-    dark_blue = c3;
-    darker_blue = c4;
-  }
-
   @override
   State<Signin> createState() => _SigninState();
 }
@@ -56,7 +45,7 @@ class _SigninState extends State<Signin> {
                   const SizedBox(
                     height: 230,
                   ),
-                  Logo(green: widget.green),
+                  Logo(green: green),
                   const SizedBox(
                     height: 40,
                   ),
@@ -66,7 +55,7 @@ class _SigninState extends State<Signin> {
                     "Name",
                     style: TextStyle(
                       fontSize: 16,
-                      color: widget.green,
+                      color: green,
                     ),
                   ),
                   TextField(
@@ -77,7 +66,7 @@ class _SigninState extends State<Signin> {
                     keyboardType: TextInputType.name,
                     style: TextStyle(
                       fontSize: 13.5,
-                      color: widget.green,
+                      color: green,
                     ),
                   ),
                   const SizedBox(
@@ -87,7 +76,7 @@ class _SigninState extends State<Signin> {
                     "Phone number",
                     style: TextStyle(
                       fontSize: 16,
-                      color: widget.green,
+                      color: green,
                     ),
                   ),
                   IntlPhoneField(
@@ -98,11 +87,11 @@ class _SigninState extends State<Signin> {
                     keyboardType: TextInputType.phone,
                     style: TextStyle(
                       fontSize: 13.5,
-                      color: widget.green,
+                      color: green,
                     ),
                     dropdownTextStyle: TextStyle(
                       fontSize: 13.5,
-                      color: widget.green,
+                      color: green,
                     ),
                     dropdownIcon: Icon(
                       Icons.arrow_drop_down,
@@ -143,13 +132,13 @@ class _SigninState extends State<Signin> {
         width: 66,
         height: 66,
         decoration: BoxDecoration(
-          color: widget.green,
+          color: green,
           borderRadius: BorderRadius.circular(33),
         ),
         child: IconButton(
           icon: Icon(
             Icons.arrow_forward_rounded,
-            color: widget.darker_blue,
+            color: darker_blue,
             size: 33,
           ),
           onPressed: () {
@@ -201,12 +190,8 @@ class _SigninState extends State<Signin> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (BuildContext context) => Verify(
-                                      green,
-                                      dark_green,
-                                      dark_blue,
-                                      darker_blue,
-                                      strInputNumber)));
+                                  builder: (BuildContext context) =>
+                                      Verify(strInputNumber)));
                         },
                         child: Text('Yes'),
                       )

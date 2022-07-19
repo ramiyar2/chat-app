@@ -1,12 +1,14 @@
-import 'package:chat_app/sigin/signin.dart';
+import 'package:chat_app/pages/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'data/color.dart';
+import 'data/theme.dart';
 
 //import 'pages/home.dart';
 import 'screens/home_screen.dart';
-import 'sigin/verify.dart';
+import 'pages/verify.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,24 +16,13 @@ void main() async {
   runApp(const MyApp());
 }
 
-var green = const Color.fromRGBO(30, 253, 119, 1);
-var dark_green = const Color.fromRGBO(0, 154, 62, 1);
-var dark_blue = const Color.fromRGBO(24, 42, 43, 1);
-var darker_blue = const Color.fromRGBO(1, 26, 27, 1);
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          fontFamily: 'Montserrat',
-          hintColor: dark_green,
-          primarySwatch: customColorGreen,
-          scaffoldBackgroundColor: darker_blue,
-          highlightColor: dark_blue,
-          splashColor: dark_green),
+      theme: themeData,
       initialRoute: '/',
       routes: {
         '/': (context) => const _SplahPage(),
@@ -54,7 +45,7 @@ class _SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return Signin(green, dark_green, dark_blue, darker_blue);
-    return Signin(green, dark_green, dark_blue, darker_blue);
+    return Signin();
   }
 }
 

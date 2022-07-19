@@ -4,19 +4,12 @@ import '../screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../data/color.dart';
 
 class Verify extends StatefulWidget {
-  var green;
-  var dark_green;
-  var dark_blue;
-  var darker_blue;
   late String number;
 
-  Verify(c1, c2, c3, c4, String number, {Key? key}) : super(key: key) {
-    green = c1;
-    dark_green = c2;
-    dark_blue = c3;
-    darker_blue = c4;
+  Verify(String number, {Key? key}) : super(key: key) {
     this.number = number;
     print(number);
   }
@@ -54,13 +47,13 @@ class _VerifyState extends State<Verify> {
                   const SizedBox(
                     height: 230,
                   ),
-                  Logo(green: widget.green),
+                  Logo(green: green),
                   const SizedBox(
                     height: 40,
                   ),
                   Text(
                     'Enter the code that we sent to \n' + widget.number,
-                    style: TextStyle(fontSize: 13, color: widget.green),
+                    style: TextStyle(fontSize: 13, color: green),
                   ),
                   const SizedBox(
                     height: 40,
@@ -70,22 +63,22 @@ class _VerifyState extends State<Verify> {
                     length: 6,
                     controller: _verifyConroller,
                     onSubmitted: (pin) => _CheckCode(pin),
-                    defaultPinTheme: MyPinTheme(widget.dark_blue),
-                    focusedPinTheme: MyPinTheme(widget.green),
+                    defaultPinTheme: MyPinTheme(dark_blue),
+                    focusedPinTheme: MyPinTheme(green),
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   Text(
                     'Edit the number',
-                    style: TextStyle(fontSize: 13, color: widget.green),
+                    style: TextStyle(fontSize: 13, color: green),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   Text(
                     'Resend code',
-                    style: TextStyle(fontSize: 13, color: widget.green),
+                    style: TextStyle(fontSize: 13, color: green),
                   ),
                   const SizedBox(
                     height: 40,
@@ -106,7 +99,7 @@ class _VerifyState extends State<Verify> {
       width: 40,
       height: 55,
       textStyle: TextStyle(
-        color: widget.green,
+        color: green,
         fontSize: 20,
       ),
       decoration: BoxDecoration(
@@ -143,13 +136,13 @@ class _VerifyState extends State<Verify> {
         width: 66,
         height: 66,
         decoration: BoxDecoration(
-          color: widget.green,
+          color: green,
           borderRadius: BorderRadius.circular(33),
         ),
         child: IconButton(
           icon: Icon(
             Icons.arrow_forward_rounded,
-            color: widget.darker_blue,
+            color: darker_blue,
             size: 33,
           ),
           onPressed: () {

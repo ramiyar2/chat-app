@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:chat_app/main.dart';
+import '../data/color.dart';
 import '../data/data.dart';
 
 class Contact extends StatelessWidget {

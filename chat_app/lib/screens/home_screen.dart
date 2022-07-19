@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:chat_app/main.dart';
+import '../data/color.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
 import '../screens/chats.dart';
