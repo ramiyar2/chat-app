@@ -145,6 +145,7 @@ class _SigninState extends State<Signin> {
           onPressed: () {
             setState(() {
               strInputNumber = '+$countryCode${inputNumber.text}';
+              strInputName = inputName.text;
             });
             strInputNumber.isEmpty
                 ? NumberIsEmpty = true
@@ -192,7 +193,7 @@ class _SigninState extends State<Signin> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      Verify(strInputNumber)));
+                                      Verify(strInputNumber, strInputName)));
                         },
                         child: Text('Yes'),
                       )
