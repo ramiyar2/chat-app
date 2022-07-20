@@ -106,14 +106,10 @@ class _VerifyState extends State<Verify> {
                     height: 20,
                   ),
                   TextButton(
-                    onPressed: isButtonDisabled == false
-                        ? () {
-                            print(
-                                'Disabled -------------------------------------------');
-                          }
+                    onPressed: isButtonDisabled
+                        ? null
                         : () {
-                            print(
-                                'Enabled-------------------------------------------');
+                            Navigator.of(context).pop();
                           },
                     child: Text(
                       isTimerEnd
