@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import '../screens/home_screen.dart';
+import 'complete_signin.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -179,8 +179,11 @@ class _VerifyState extends State<Verify> {
         if (value.user != null) {
           SharedPreferences _pref = await SharedPreferences.getInstance();
           _pref.setString('number', widget.number);
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      CompleteSigin(widget.name.toString())));
         }
         setState(() {
           showSpiner = false;
@@ -234,7 +237,8 @@ class _VerifyState extends State<Verify> {
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => HomePage()),
+                      builder: (BuildContext context) =>
+                          CompleteSigin(widget.name.toString())),
                   (route) => false);
             }
           });

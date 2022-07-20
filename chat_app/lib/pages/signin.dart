@@ -172,9 +172,8 @@ class _SigninState extends State<Signin> {
               child: AlertDialog(
                 title: Text('Are you sure !'),
                 content: Column(children: [
-                  Text('Are you sure that the number ' +
-                      strInputNumber +
-                      ' is your number'),
+                  Text(
+                      'Hi! $strInputName are you sure that the number $strInputNumber is your number'),
                   SizedBox(
                     height: 20,
                   ),
@@ -189,6 +188,7 @@ class _SigninState extends State<Signin> {
                       ),
                       ElevatedButton(
                         onPressed: () {
+                          print(strInputName);
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -220,7 +220,7 @@ class _SigninState extends State<Signin> {
                 content: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('please enter right number '),
+                      Text('please enter right number or name'),
                       SizedBox(
                         height: 20,
                       ),

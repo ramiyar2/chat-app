@@ -208,18 +208,26 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Container HeaderImg() {
-    return Container(
-      width: 60,
-      height: 60,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(60),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(
-              chats[0]["img"],
-            ),
-          )),
+  SizedBox HeaderImg() {
+    return SizedBox(
+      width: 150,
+      child: Row(
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    chats[0]["img"],
+                  ),
+                )),
+          ),
+          Text(FirebaseAuth.instance.currentUser!.displayName.toString()),
+        ],
+      ),
     );
   }
 
