@@ -11,8 +11,10 @@ import '../widget/logo.dart';
 
 class Verify extends StatefulWidget {
   late String number;
-  Verify(number) {
+  late String name;
+  Verify(number, name) {
     this.number = number;
+    this.name = name;
   }
   @override
   State<Verify> createState() => _VerifyState();
@@ -177,8 +179,10 @@ class _VerifyState extends State<Verify> {
         if (value.user != null) {
           SharedPreferences _pref = await SharedPreferences.getInstance();
           _pref.setString('number', widget.number);
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => HomePage(name)));
         }
         setState(() {
           showSpiner = false;
