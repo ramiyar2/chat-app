@@ -47,8 +47,8 @@ class _SigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Signin();
-    return number == null ? Signin() : HomePage();
+    // return Signin() number == null ? Signin() : HomePage();
+    return Signin();
   }
 }
 
