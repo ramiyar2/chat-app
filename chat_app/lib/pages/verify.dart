@@ -24,15 +24,40 @@ class _VerifyState extends State<Verify> {
   late String _verificationCode;
   bool isButtonDisabled = true;
   bool isTimerDisabled = false;
+  bool isTimerEnd = false;
   var _verifyConroller = TextEditingController();
+
+  int _counter = 20;
+  late Timer _timer;
+  void _startTimer() {
+    _counter = 20;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_counter > 0) {
+        setState(() {
+          _counter--;
+        });
+      } else {
+        _timer.cancel();
+        setState(() {
+          isTimerEnd = true;
+        });
+      }
+    });
+  }
+
+  final sBar_resend = SnackBar(
+    content: Text('verification code Resend'),
+  );
+  final sBar_wrong = SnackBar(
+    content: Text('wrong code please chacke again and enter right code'),
+  );
   @override
   Widget build(BuildContext context) {
     if (!isTimerDisabled) {
-      Timer(Duration(seconds: 20), () {
+      Timer(const Duration(seconds: 20), () {
         setState(() {
           isTimerDisabled = true;
           isButtonDisabled = false;
-          print('isButtonDisabled' + isButtonDisabled.toString());
         });
       });
     }
@@ -73,22 +98,14 @@ class _VerifyState extends State<Verify> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     length: 6,
                     controller: _verifyConroller,
-                    onSubmitted: (pin) => _CheckCode(pin),
+                    onSubmitted: (pin) => _CheckCode(pin, sBar_wrong),
                     defaultPinTheme: MyPinTheme(dark_blue),
                     focusedPinTheme: MyPinTheme(green),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextButton(
-                    child: Text(
-                      'Edit the number',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: isButtonDisabled ? green_op : green,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
                     onPressed: isButtonDisabled == false
                         ? () {
                             print(
@@ -98,23 +115,39 @@ class _VerifyState extends State<Verify> {
                             print(
                                 'Enabled-------------------------------------------');
                           },
-                  ),
-                  TextButton(
                     child: Text(
-                      'Resend code',
+                      isTimerEnd
+                          ? 'Edit the number '
+                          : 'Edit the number ($_counter)',
                       style: TextStyle(
                         fontSize: 13,
                         color: isButtonDisabled ? green_op : green,
                         decoration: TextDecoration.underline,
                       ),
                     ),
-                    onPressed: () {},
                   ),
-                  SizedBox(
+                  TextButton(
+                    onPressed: isButtonDisabled
+                        ? null
+                        : () {
+                            _VerfiyPhone();
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(sBar_resend);
+                          },
+                    child: Text(
+                      isTimerEnd ? 'Resend code ' : 'Resend code ($_counter)',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: isButtonDisabled ? green_op : green,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
                     height: 20,
                   ),
                   //ForwardButtom
-                  ForwardButtom(context),
+                  ForwardButtom(context, sBar_wrong),
                 ],
               ),
             ),
@@ -139,7 +172,7 @@ class _VerifyState extends State<Verify> {
     );
   }
 
-  _CheckCode(String pin) async {
+  _CheckCode(String pin, sBar_wrong) async {
     try {
       await FirebaseAuth.instance
           .signInWithCredential(PhoneAuthProvider.credential(
@@ -158,11 +191,11 @@ class _VerifyState extends State<Verify> {
         showSpiner = false;
       });
       FocusScope.of(context).unfocus();
-      print('wrong');
+      ScaffoldMessenger.of(context).showSnackBar(sBar_wrong);
     }
   }
 
-  Center ForwardButtom(BuildContext context) {
+  Center ForwardButtom(BuildContext context, sBar_wrong) {
     return Center(
       child: Container(
         alignment: Alignment.center,
@@ -183,7 +216,7 @@ class _VerifyState extends State<Verify> {
               showSpiner = true;
             });
             strInputVerfiyText = _verifyConroller.text;
-            _CheckCode(strInputVerfiyText);
+            _CheckCode(strInputVerfiyText, sBar_wrong);
           },
         ),
       ),
@@ -219,11 +252,12 @@ class _VerifyState extends State<Verify> {
             _verificationCode = _verficationId;
           });
         },
-        timeout: Duration(seconds: 120));
+        timeout: const Duration(seconds: 120));
   }
 
   @override
   void initState() {
+    _startTimer();
     super.initState();
     _VerfiyPhone();
   }
