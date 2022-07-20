@@ -42,7 +42,7 @@ dependencies:
   firebase_storage: ^10.3.2
   get: ^4.6.5
   pinput: ^2.2.11
-  modal_progress_hud_nsn: ^0.2.
+  modal_progress_hud_nsn: ^0.2.1
   shared_preferences: ^2.0.15
 
 dev_dependencies:
