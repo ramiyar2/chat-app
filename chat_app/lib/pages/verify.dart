@@ -177,6 +177,7 @@ class _VerifyState extends State<Verify> {
         if (value.user != null) {
           SharedPreferences _pref = await SharedPreferences.getInstance();
           _pref.setString('number', widget.number);
+          FirebaseAuth.instance.currentUser?.updateDisplayName('hiiiiiiiiii');
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (BuildContext context) => HomePage()));
         }
