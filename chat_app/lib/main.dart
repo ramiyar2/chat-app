@@ -10,10 +10,14 @@ import 'data/theme.dart';
 //import 'pages/home.dart';
 import 'screens/home_screen.dart';
 import 'pages/verify.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+var number;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  SharedPreferences _pref = await SharedPreferences.getInstance();
+  number = _pref.getString('number');
   runApp(const MyApp());
 }
 
@@ -44,7 +48,7 @@ class _SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return Signin();
-    return Signin();
+    return number == null ? Signin() : HomePage();
   }
 }
 
