@@ -10,6 +10,7 @@ import 'data/theme.dart';
 //import 'pages/home.dart';
 import 'screens/home_screen.dart';
 import 'pages/verify.dart';
+import 'pages/complete_signin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var number;
@@ -48,7 +49,7 @@ class _SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return Signin() number == null ? Signin() : HomePage();
-    return Signin();
+    return CompleteSigin('ram');
   }
 }
 
