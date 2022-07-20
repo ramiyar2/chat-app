@@ -6,6 +6,7 @@ import '../screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../data/color.dart';
 import '../widget/logo.dart';
 
@@ -168,13 +169,15 @@ class _VerifyState extends State<Verify> {
     );
   }
 
-  _CheckCode(String pin, sBar_wrong) async {
+  _CheckCode(String pin, sBarWrong) async {
     try {
       await FirebaseAuth.instance
           .signInWithCredential(PhoneAuthProvider.credential(
               verificationId: _verificationCode, smsCode: pin))
           .then((value) async {
         if (value.user != null) {
+          SharedPreferences _pref = await SharedPreferences.getInstance();
+          _pref.setString('number', widget.number);
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (BuildContext context) => HomePage()));
         }
@@ -187,11 +190,11 @@ class _VerifyState extends State<Verify> {
         showSpiner = false;
       });
       FocusScope.of(context).unfocus();
-      ScaffoldMessenger.of(context).showSnackBar(sBar_wrong);
+      ScaffoldMessenger.of(context).showSnackBar(sBarWrong);
     }
   }
 
-  Center ForwardButtom(BuildContext context, sBar_wrong) {
+  Center ForwardButtom(BuildContext context, sBarWrong) {
     return Center(
       child: Container(
         alignment: Alignment.center,
@@ -212,7 +215,7 @@ class _VerifyState extends State<Verify> {
               showSpiner = true;
             });
             strInputVerfiyText = _verifyConroller.text;
-            _CheckCode(strInputVerfiyText, sBar_wrong);
+            _CheckCode(strInputVerfiyText, sBarWrong);
           },
         ),
       ),
