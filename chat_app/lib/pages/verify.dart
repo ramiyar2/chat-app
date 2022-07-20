@@ -125,7 +125,7 @@ class _VerifyState extends State<Verify> {
                   TextButton(
                     onPressed: isButtonDisabled
                         ? null
-                        : () {
+                        : () async {
                             _VerfiyPhone();
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(sBar_resend);
