@@ -179,10 +179,8 @@ class _VerifyState extends State<Verify> {
         if (value.user != null) {
           SharedPreferences _pref = await SharedPreferences.getInstance();
           _pref.setString('number', widget.number);
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => HomePage(name)));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
         }
         setState(() {
           showSpiner = false;
