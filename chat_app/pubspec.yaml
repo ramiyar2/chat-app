@@ -73,6 +73,7 @@ flutter:
   assets:
     - assets/img/myLogo.png
     - assets/img/background.png
+    - assets/img/user.png
     - assets/data/massages.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
