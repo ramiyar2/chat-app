@@ -73,7 +73,7 @@ class Contact extends StatelessWidget {
                       ),
                     ),
                     onTap: () => callChatScreen(
-                        docs[index]['userName'], docs[index]['uid']),
+                        context, docs[index]['userName'], docs[index]['uid']),
                   ),
               separatorBuilder: (BuildContext context, int index) => SizedBox(
                     height: 20,
