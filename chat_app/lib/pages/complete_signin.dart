@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:chat_app/data/color.dart';
 import 'package:chat_app/data/theme.dart';
 import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/server/firebase.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -107,18 +108,8 @@ class _CompleteSiginState extends State<CompleteSigin> {
                   ],
                 ),
                 TextButton(
-                    onPressed: () async {
-                      final _ref = FirebaseStorage.instance
-                          .ref()
-                          .child('users_images')
-                          .child(_auth.currentUser!.uid + '.jpg');
-                      if (pakedImage != null) {
-                        await _ref.putFile(pakedImage!);
-                      }
-                      final profileUrl = await _ref.getDownloadURL();
-                      _auth.currentUser
-                          ?.updateDisplayName(widget.name.toString());
-                      _auth.currentUser?.updatePhotoURL(profileUrl.toString());
+                    onPressed: () {
+                      CreateUser(pakedImage, widget.name);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
