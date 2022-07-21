@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../data/color.dart';
-import '../data/data.dart';
 
 class Contact extends StatelessWidget {
   const Contact({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     String _video =
@@ -17,56 +18,68 @@ class Contact extends StatelessWidget {
   }
 
   Container ContactsList(String _video, String _call) {
+    final currentUser = FirebaseAuth.instance.currentUser?.uid;
     return Container(
       margin: EdgeInsets.only(top: 20),
       height: 600,
-      child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => ListTile(
-                title: Text(contact[index]['userName']),
-                subtitle: Text(
-                  contact[index]['store'],
-                  style: TextStyle(color: green),
-                ),
-                leading: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                          contact[index]["img"],
-                        ),
-                      )),
-                ),
-                trailing: SizedBox(
-                  width: 100,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.network(
-                          _video,
-                          width: 28,
-                          color: Colors.white,
-                        ),
+      child: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .where('uid', isEqualTo: currentUser)
+            .snapshots(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          final docs = snapshot.data?.docs;
+          return ListView.separated(
+              itemBuilder: (BuildContext context, int index) => ListTile(
+                    title: Text(docs[index]['userName']),
+                    subtitle: Text(
+                      docs[index]['status'],
+                      style: TextStyle(color: green_op),
+                    ),
+                    leading: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              docs[index]["profileImageUrl"],
+                            ),
+                          )),
+                    ),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Image.network(
+                              _video,
+                              width: 28,
+                              color: Colors.white,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Image.network(
+                              _call,
+                              width: 28,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.network(
-                          _call,
-                          width: 28,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                    ),
+                    onTap: () => callChatScreen(
+                        docs[index]['userName'], docs[index]['uid']),
                   ),
-                ),
-              ),
-          separatorBuilder: (BuildContext context, int index) => SizedBox(
-                height: 20,
-              ),
-          itemCount: contact.length),
+              separatorBuilder: (BuildContext context, int index) => SizedBox(
+                    height: 20,
+                  ),
+              itemCount: docs.length);
+        },
+      ),
     );
   }
 }
