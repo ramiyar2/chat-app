@@ -221,9 +221,11 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    chats[0]["img"],
-                  ),
+                      FirebaseAuth.instance.currentUser!.photoURL.toString()),
                 )),
+          ),
+          SizedBox(
+            width: 10,
           ),
           Text(FirebaseAuth.instance.currentUser!.displayName.toString()),
         ],
