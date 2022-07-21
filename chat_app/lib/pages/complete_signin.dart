@@ -108,8 +108,6 @@ class _CompleteSiginState extends State<CompleteSigin> {
                 ),
                 TextButton(
                     onPressed: () async {
-                      print(
-                          'object---------------------------------------------');
                       final _ref = FirebaseStorage.instance
                           .ref()
                           .child('users_images')
