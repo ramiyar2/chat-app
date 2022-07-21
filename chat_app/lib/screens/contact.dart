@@ -29,6 +29,14 @@ class Contact extends StatelessWidget {
             .where('uid', isEqualTo: currentUser)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('field to load date from server'),
+            );
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
           final docs = snapshot.data?.docs;
           return ListView.separated(
               itemBuilder: (BuildContext context, int index) => ListTile(
