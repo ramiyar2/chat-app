@@ -27,7 +27,7 @@ CreateUser(pakedImage, name) async {
         'userName': name,
         'phoneNumber': _auth.currentUser!.phoneNumber,
         'status': 'avalibly',
-        'profileImageUrl': pakedImage.toString(),
+        'profileImageUrl': profileUrl.toString(),
         'uid': _auth.currentUser!.uid
       });
     }
