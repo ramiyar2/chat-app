@@ -90,10 +90,10 @@ Container Chats(Size size) {
             ),
           ),
           child: ListTile(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => ChatPage())),
+            // onTap: () => Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (BuildContext context) => ChatPage())),
             title: Text(chats[index]["userName"]),
             subtitle: Text(
               chats[index]["massage"],
