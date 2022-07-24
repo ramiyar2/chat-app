@@ -110,7 +110,7 @@ class _CompleteSiginState extends State<CompleteSigin> {
                 TextButton(
                     onPressed: () {
                       CreateUser(pakedImage, widget.name);
-                      Navigator.push(context,
+                      Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Text('sbumit'))

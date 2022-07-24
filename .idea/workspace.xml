@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/chat-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chat-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/data/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/data/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/verify.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/verify.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -58,5 +57,16 @@
       <updated>1656461168013</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
