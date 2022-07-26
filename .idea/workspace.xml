@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chat_app/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/firebase_emulator.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/chat_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/chat_state.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/lib.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/users_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/users_state.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/mobx_build.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/mobx_refresh.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/mobx_watch.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chat_app/runall.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/complete_signin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/complete_signin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/server/firebase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/server/firebase.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="add profile image" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -174,6 +150,133 @@
       <option name="presentableId" value="Default" />
       <updated>1656461168013</updated>
     </task>
+    <task id="LOCAL-00001" summary="mobX build">
+      <created>1658862634139</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862634139</updated>
+    </task>
+    <task id="LOCAL-00002" summary="mobX refresh">
+      <created>1658862651211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862651211</updated>
+    </task>
+    <task id="LOCAL-00003" summary="mobX watch">
+      <created>1658862666284</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862666284</updated>
+    </task>
+    <task id="LOCAL-00004" summary="main">
+      <created>1658862801734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862801734</updated>
+    </task>
+    <task id="LOCAL-00005" summary="new message">
+      <created>1658862816035</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862816035</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add packages">
+      <created>1658862840930</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862840930</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chat page">
+      <created>1658862859694</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862859694</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chat state">
+      <created>1658862890363</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862890363</updated>
+    </task>
+    <task id="LOCAL-00009" summary="chats">
+      <created>1658862907851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862907851</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add packages">
+      <created>1658862923407</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862923407</updated>
+    </task>
+    <task id="LOCAL-00011" summary="moved to user state ..">
+      <created>1658862951859</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862951859</updated>
+    </task>
+    <task id="LOCAL-00012" summary="lib states">
+      <created>1658862975389</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862975389</updated>
+    </task>
+    <task id="LOCAL-00013" summary="flutter launch">
+      <created>1658862996641</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1658862996642</updated>
+    </task>
+    <task id="LOCAL-00014" summary="users state">
+      <created>1658863013999</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1658863013999</updated>
+    </task>
+    <task id="LOCAL-00015" summary="signin page">
+      <created>1658863049781</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1658863049781</updated>
+    </task>
+    <task id="LOCAL-00016" summary="home page">
+      <created>1658863058381</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1658863058381</updated>
+    </task>
+    <task id="LOCAL-00017" summary="firebase emulator run">
+      <created>1658863075821</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1658863075821</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add profile image">
+      <created>1658863102010</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1658863102010</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,5 +290,25 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="mobX build" />
+    <MESSAGE value="mobX refresh" />
+    <MESSAGE value="mobX watch" />
+    <MESSAGE value="main" />
+    <MESSAGE value="new message" />
+    <MESSAGE value="chat page" />
+    <MESSAGE value="chat state" />
+    <MESSAGE value="chats" />
+    <MESSAGE value="add packages" />
+    <MESSAGE value="moved to user state .." />
+    <MESSAGE value="lib states" />
+    <MESSAGE value="flutter launch" />
+    <MESSAGE value="users state" />
+    <MESSAGE value="signin page" />
+    <MESSAGE value="home page" />
+    <MESSAGE value="firebase emulator run" />
+    <MESSAGE value="add profile image" />
+    <option name="LAST_COMMIT_MESSAGE" value="add profile image" />
   </component>
 </project>
