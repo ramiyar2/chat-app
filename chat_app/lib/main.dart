@@ -19,7 +19,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SharedPreferences _pref = await SharedPreferences.getInstance();
   number = _pref.getString('number');
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -48,8 +48,9 @@ class _SigninPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     // return Signin() number == null ? Signin() : HomePage();
-    return Signin();
+    return  Signin();
   }
 }
 
