@@ -1,24 +1,33 @@
+import 'package:chat_app/states/lib.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../data/color.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
+import '../server/callChatScreen.dart';
 import 'pages/chat_page.dart';
 
-class Chat extends StatelessWidget {
+class Chat extends StatefulWidget {
+  @override
+  State<Chat> createState() => _ChatState();
+}
+
+class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return ChatAndStores(size, dark_blue);
+    return ChatAndStores(size,context);
   }
 }
 
-SingleChildScrollView ChatAndStores(Size size, Color darker_blue) {
+SingleChildScrollView ChatAndStores(Size size ,BuildContext context) {
   return SingleChildScrollView(
     child: Wrap(
       children: [
         Title('Stores'),
         Stores(size),
         Title('Chats'),
-        Chats(size),
+        Chats(size,context),
       ],
     ),
   );
@@ -68,86 +77,158 @@ Container Title(String title) {
   );
 }
 
-Container Chats(Size size) {
+Container Chats(Size size , BuildContext context) {
   return Container(
     margin: const EdgeInsets.only(
       top: 10,
     ),
     height: 600,
-    child: ListView.builder(
-      itemCount: chats.length,
-      itemBuilder: (BuildContext context, int index) {
+    child: ListView(
+      children: chatState.message.values.toList().map<Widget>((data) {
         return Card(
           margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           color: dark_blue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
             side: BorderSide(
-              color: chats[index]["unread"] == null
+              color: data['frindName'] == null
                   ? Color.fromARGB(0, 0, 0, 0)
                   : green,
               width: 2.0,
             ),
           ),
           child: ListTile(
-            // onTap: () => Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (BuildContext context) => ChatPage())),
-            title: Text(chats[index]["userName"]),
+            onTap:() => callChatScreen(context,data['frindName'],data['frindUid']),
+            title: Text(data['frindName']),
             subtitle: Text(
-              chats[index]["massage"],
+              data['msg'],
               style: TextStyle(
-                color: chats[index]["unread"] == null
+                color: data['msg'] == null
                     ? Color.fromRGBO(255, 255, 255, 0.5)
                     : green,
               ),
             ),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  chats[index]["time"].toString(),
-                  style: TextStyle(
-                    color: chats[index]["unread"] == null
-                        ? Color.fromRGBO(255, 255, 255, 0.5)
-                        : green,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: 25,
-                  height: 25,
-                  child: chats[index]["unread"] == null
-                      ? Container()
-                      : CircleAvatar(
-                          backgroundColor: green,
-                          child: Text(
-                            chats[index]["unread"].toString(),
-                            style: TextStyle(color: darker_blue),
-                          ),
-                        ),
-                ),
-              ],
-            ),
-            leading: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(60),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      chats[index]["img"],
-                    ),
-                  )),
-            ),
+            // trailing: Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   crossAxisAlignment: CrossAxisAlignment.end,
+            //   children: [
+            //     Text(
+            //       data['time'].toString(),
+            //       style: TextStyle(
+            //         color: data['time'] == null
+            //             ? Color.fromRGBO(255, 255, 255, 0.5)
+            //             : green,
+            //       ),
+            //     ),
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     //   Container(
+            //     //     width: 25,
+            //     //     height: 25,
+            //     //     child: chats[index]["unread"] == null
+            //     //         ? Container()
+            //     //         : CircleAvatar(
+            //     //             backgroundColor: green,
+            //     //             child: Text(
+            //     //               chats[index]["unread"].toString(),
+            //     //               style: TextStyle(color: darker_blue),
+            //     //             ),
+            //     //           ),
+            //     //   ),
+            //   ],
+            // ),
+            // leading: Container(
+            //   width: 60,
+            //   height: 60,
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(60),
+            //       image: DecorationImage(
+            //         fit: BoxFit.cover,
+            //         image: NetworkImage(
+            //           chats[index]["img"],
+            //         ),
+            //       )),
+            // ),
           ),
         );
-      },
+      }).toList(),
     ),
+
+    // child: ListView.builder(
+    //   itemCount: chats.length,
+    //   itemBuilder: (BuildContext context, int index) {
+    //     return Card(
+    //       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+    //       color: dark_blue,
+    //       shape: RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.circular(10.0),
+    //         side: BorderSide(
+    //           color: chats[index]["unread"] == null
+    //               ? Color.fromARGB(0, 0, 0, 0)
+    //               : green,
+    //           width: 2.0,
+    //         ),
+    //       ),
+    //       child: ListTile(
+    //         // onTap: () => Navigator.push(
+    //         //     context,
+    //         //     MaterialPageRoute(
+    //         //         builder: (BuildContext context) => ChatPage())),
+    //         title: Text(chats[index]["userName"]),
+    //         subtitle: Text(
+    //           chats[index]["massage"],
+    //           style: TextStyle(
+    //             color: chats[index]["unread"] == null
+    //                 ? Color.fromRGBO(255, 255, 255, 0.5)
+    //                 : green,
+    //           ),
+    //         ),
+    //         trailing: Column(
+    //           mainAxisAlignment: MainAxisAlignment.center,
+    //           crossAxisAlignment: CrossAxisAlignment.end,
+    //           children: [
+    //             Text(
+    //               chats[index]["time"].toString(),
+    //               style: TextStyle(
+    //                 color: chats[index]["unread"] == null
+    //                     ? Color.fromRGBO(255, 255, 255, 0.5)
+    //                     : green,
+    //               ),
+    //             ),
+    //             SizedBox(
+    //               height: 10,
+    //             ),
+    //             Container(
+    //               width: 25,
+    //               height: 25,
+    //               child: chats[index]["unread"] == null
+    //                   ? Container()
+    //                   : CircleAvatar(
+    //                       backgroundColor: green,
+    //                       child: Text(
+    //                         chats[index]["unread"].toString(),
+    //                         style: TextStyle(color: darker_blue),
+    //                       ),
+    //                     ),
+    //             ),
+    //           ],
+    //         ),
+    //         leading: Container(
+    //           width: 60,
+    //           height: 60,
+    //           decoration: BoxDecoration(
+    //               borderRadius: BorderRadius.circular(60),
+    //               image: DecorationImage(
+    //                 fit: BoxFit.cover,
+    //                 image: NetworkImage(
+    //                   chats[index]["img"],
+    //                 ),
+    //               )),
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // ),
   );
 }
