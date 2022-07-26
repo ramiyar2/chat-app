@@ -1,14 +1,9 @@
-import 'dart:io';
-
 import 'package:chat_app/data/color.dart';
 import 'package:chat_app/data/theme.dart';
 import 'package:chat_app/screens/home_screen.dart';
-import 'package:chat_app/server/firebase.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:chat_app/states/lib.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image_cropper/image_cropper.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class CompleteSigin extends StatefulWidget {
   late String name;
@@ -22,44 +17,7 @@ class CompleteSigin extends StatefulWidget {
 }
 
 class _CompleteSiginState extends State<CompleteSigin> {
-  final ImagePicker _picker = ImagePicker();
-  File? pakedImage;
-  final _auth = FirebaseAuth.instance;
-
-  ImageProvider _userImage = AssetImage('assets/img/user.png');
-  FechImage() async {
-    final XFile? image =
-        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
-    if (image != null) {
-      CroppedFile? croppedFile = await ImageCropper().cropImage(
-        sourcePath: image.path,
-        aspectRatioPresets: [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9
-        ],
-        uiSettings: [
-          AndroidUiSettings(
-              toolbarTitle: 'Cropper',
-              toolbarColor: Colors.deepOrange,
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
-          IOSUiSettings(
-            title: 'Cropper',
-          ),
-        ],
-      );
-      if (croppedFile != null) {
-        setState(() {
-          pakedImage = File(croppedFile.path);
-          _userImage = FileImage(pakedImage!);
-        });
-      }
-    }
-  }
+  ImageProvider imageProvider = AssetImage('assets/img/user.png');
 
   @override
   Widget build(BuildContext context) {
@@ -77,19 +35,25 @@ class _CompleteSiginState extends State<CompleteSigin> {
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(75),
-                        image: DecorationImage(
-                          image: _userImage,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                    Observer(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: 150,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(75),
+                            image: DecorationImage(
+                              image: usersState.pakedImage != null
+                                  ? FileImage(usersState.pakedImage!)
+                                  : imageProvider,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     InkWell(
-                      onTap: FechImage,
+                      onTap: () => Alert(context),
                       child: Container(
                         alignment: Alignment.center,
                         width: 50,
@@ -109,7 +73,8 @@ class _CompleteSiginState extends State<CompleteSigin> {
                 ),
                 TextButton(
                     onPressed: () {
-                      CreateUser(pakedImage, widget.name);
+                      usersState.createOrUpdateUserInFirestore(widget.name);
+                      // CreateUser(pakedImage, widget.name);
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
@@ -121,4 +86,41 @@ class _CompleteSiginState extends State<CompleteSigin> {
       ),
     );
   }
+}
+
+Future<dynamic> Alert(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return Center(
+          child: Container(
+            width: 500,
+            height: 190,
+            child: AlertDialog(
+              title: Text('Take profile picture From!'),
+              content: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        usersState.takeImageFromCamera();
+                        Navigator.pop(context);
+                      },
+                      child: Text('Camera'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        usersState.takeImageFromGallary();
+                        Navigator.pop(context);
+                      },
+                      child: Text('Gallary'),
+                    )
+                  ],
+                )
+              ]),
+            ),
+          ),
+        );
+      });
 }
