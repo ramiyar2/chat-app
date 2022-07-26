@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:chat_app/main.dart';
 import 'package:chat_app/pages/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -8,6 +7,7 @@ import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import '../data/color.dart';
 import '../widget/logo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Signin extends StatefulWidget {
   @override
@@ -22,6 +22,18 @@ class _SigninState extends State<Signin> {
   String strInputName = ' ';
   bool NumberIsEmpty = true;
   bool NameIsEmpty = true;
+  User? currentUser= FirebaseAuth.instance.currentUser;
+  @override
+  void initState(){
+    if(currentUser!=null){
+      inputName.text= currentUser!.displayName.toString();
+    }
+    else{
+      inputName.text ='';
+      inputNumber.text = '';
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
