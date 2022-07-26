@@ -4,7 +4,7 @@ import '../../data/color.dart';
 
 TextEditingController massController = TextEditingController();
 
-void sendMsg(String msg, chats, chatDocId, currentUser) {
+void sendMsg(String msg, chats, chatDocId, currentUser, friendName) {
   if (msg == '' || msg == null) {
     return;
   } else {
@@ -12,12 +12,14 @@ void sendMsg(String msg, chats, chatDocId, currentUser) {
     chats.doc(chatDocId).collection('messages').add({
       'createdOn': FieldValue.serverTimestamp(),
       'uid': currentUser,
+      'frindName': friendName,
       'msg': msg
     });
   }
 }
 
-Container newMsg(BuildContext context, chats, chatDocId, currentUser) {
+Container newMsg(
+    BuildContext context, chats, chatDocId, currentUser, friendName) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 10),
     alignment: Alignment.center,
@@ -35,12 +37,13 @@ Container newMsg(BuildContext context, chats, chatDocId, currentUser) {
               label: Text('send a message ...'),
             ),
             controller: massController,
-            onSubmitted: (val) => sendMsg(val, chats, chatDocId, currentUser),
+            onSubmitted: (val) =>
+                sendMsg(val, chats, chatDocId, currentUser, friendName),
           ),
         ),
         IconButton(
-            onPressed: () =>
-                sendMsg(massController.text, chats, chatDocId, currentUser),
+            onPressed: () => sendMsg(
+                massController.text, chats, chatDocId, currentUser, friendName),
             icon: Icon(Icons.send)),
       ],
     ),
