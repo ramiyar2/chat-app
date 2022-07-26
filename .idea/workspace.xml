@@ -5,10 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/chat-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chat-app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/firebase_emulator.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/chat_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/chat_state.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/lib.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/users_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/states/users_state.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/mobx_build.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/mobx_refresh.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/mobx_watch.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/runall.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/complete_signin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/complete_signin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/pages/signin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/server/firebase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/server/firebase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +46,20 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2BEAyCn8Jsdd6PEDaQ6ZRs1AxRq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,9 +71,99 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chat_app/firebase_emulator.bat" />
+    <property name="settings.editor.selected.configurable" value="emulator" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager" selected="Flutter.main.dart">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/chat_app/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Firebase Emulator" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/chat_app/firebase_emulator.bat" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Flutter Run" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/chat_app/runall.bat" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="MobX Build" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/chat_app/mobx_build.bat" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="MobX Refresh" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/chat_app/mobx_refresh.bat" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Mobx Watch" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/chat_app/mobx_watch.bat" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Shell Script.Flutter Run" />
+      <item itemvalue="Shell Script.MobX Build" />
+      <item itemvalue="Shell Script.MobX Refresh" />
+      <item itemvalue="Shell Script.Mobx Watch" />
+      <item itemvalue="Shell Script.Firebase Emulator" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -68,5 +186,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
