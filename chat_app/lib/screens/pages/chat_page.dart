@@ -37,6 +37,10 @@ class _ChatPageState extends State<ChatPage> {
           } else {
             chats.add({
               'users': {currentUser: null, friendUid: null},
+              'names': {
+                currentUser: FirebaseAuth.instance.currentUser?.displayName,
+                friendUid: friendName
+              },
             }).then((value) => chatDocId = value);
           }
         })
@@ -63,7 +67,7 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 header(context, friendName),
                 chatBubble(chatDocId, friendUid),
-                newMsg(context, chats, chatDocId, currentUser),
+                newMsg(context, chats, chatDocId, currentUser, friendName),
               ],
             ),
           ),
