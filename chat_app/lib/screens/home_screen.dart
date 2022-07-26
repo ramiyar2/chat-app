@@ -6,6 +6,7 @@ import '../screens/chats.dart';
 import '../screens/call.dart';
 import '../screens/contact.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../states/lib.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -15,6 +16,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    chatState.RefrenceChatForCurrentUser();
+    usersState.initUseresListeners();
+    super.initState();
+  }
+
   final _auth = FirebaseAuth.instance;
   late User signInUser;
   void GetCurrentUser() {
@@ -123,7 +131,7 @@ class _HomePageState extends State<HomePage> {
 
   Center FiledLoadDate() {
     return const Center(
-      child: const Text(
+      child: Text(
         'field to load date from server',
         style: TextStyle(color: Colors.white),
       ),
