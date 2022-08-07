@@ -16,18 +16,18 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return ChatAndStores(size,context);
+    return ChatAndStores(size, context);
   }
 }
 
-SingleChildScrollView ChatAndStores(Size size ,BuildContext context) {
+SingleChildScrollView ChatAndStores(Size size, BuildContext context) {
   return SingleChildScrollView(
     child: Wrap(
       children: [
         Title('Stores'),
         Stores(size),
         Title('Chats'),
-        Chats(size,context),
+        Chats(size, context),
       ],
     ),
   );
@@ -77,7 +77,7 @@ Container Title(String title) {
   );
 }
 
-Container Chats(Size size , BuildContext context) {
+Container Chats(Size size, BuildContext context) {
   return Container(
     margin: const EdgeInsets.only(
       top: 10,
@@ -98,7 +98,11 @@ Container Chats(Size size , BuildContext context) {
             ),
           ),
           child: ListTile(
-            onTap:() => callChatScreen(context,data['frindName'],data['frindUid']),
+            onTap: () => callChatScreen(
+                context,
+                data['frindName'],
+                data['frindUid'],
+                'https://images.hdqwalls.com/download/flutter-logo-4k-qn-1920x1080.jpg'),
             title: Text(data['frindName']),
             subtitle: Text(
               data['msg'],

@@ -48,6 +48,8 @@ dependencies:
   image_cropper: ^2.0.3
   mobx: ^2.0.7+5
   flutter_mobx: ^2.0.6+1
+  agora_rtc_engine: ^5.3.0
+  permission_handler: ^10.0.0
   
 
 dev_dependencies:

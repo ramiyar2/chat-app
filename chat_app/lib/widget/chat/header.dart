@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../data/color.dart';
 import '../../data/icons.dart';
 
-Container header(context, friendName) {
+Container header(context, friendName, String frindProfile) {
   return Container(
     alignment: Alignment.center,
     width: double.infinity,
@@ -33,10 +33,10 @@ Container header(context, friendName) {
               height: 60,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(60),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      "http://placeimg.com/640/480/any",
+                      frindProfile,
                     ),
                   )),
             ),

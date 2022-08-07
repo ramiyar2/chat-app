@@ -9,10 +9,15 @@ import '../../widget/chat/new_messages.dart';
 class ChatPage extends StatefulWidget {
   final friendName;
   final friendUid;
-  ChatPage({required this.friendName, required this.friendUid});
+  final frindProfile;
+  ChatPage(
+      {required this.friendName,
+      required this.friendUid,
+      required this.frindProfile});
 
   @override
-  State<ChatPage> createState() => _ChatPageState(friendName, friendUid);
+  State<ChatPage> createState() =>
+      _ChatPageState(friendName, friendUid, frindProfile);
 }
 
 class _ChatPageState extends State<ChatPage> {
@@ -20,9 +25,10 @@ class _ChatPageState extends State<ChatPage> {
       FirebaseFirestore.instance.collection('chats');
   final friendName;
   final friendUid;
+  final frindProfile;
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
   var chatDocId;
-  _ChatPageState(this.friendName, this.friendUid);
+  _ChatPageState(this.friendName, this.friendUid, this.frindProfile);
 
   @override
   void initState() {
@@ -65,7 +71,7 @@ class _ChatPageState extends State<ChatPage> {
                     fit: BoxFit.cover)),
             child: Column(
               children: [
-                header(context, friendName),
+                header(context, friendName, frindProfile.toString()),
                 chatBubble(chatDocId, friendUid),
                 newMsg(context, chats, chatDocId, currentUser, friendName),
               ],
