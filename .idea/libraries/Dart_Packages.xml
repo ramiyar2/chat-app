@@ -9,6 +9,13 @@
             </list>
           </value>
         </entry>
+        <entry key="agora_rtc_engine">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/agora_rtc_engine-5.3.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="analyzer">
           <value>
             <list>
@@ -569,6 +576,41 @@
             </list>
           </value>
         </entry>
+        <entry key="permission_handler">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-10.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_android-10.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_apple">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_apple-9.0.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-3.7.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_windows">
+          <value>
+            <list>
+              <option value="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_windows-0.1.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="pinput">
           <value>
             <list>
@@ -818,6 +860,7 @@
     </properties>
     <CLASSES>
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-42.0.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/agora_rtc_engine-5.3.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-4.3.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.1/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib" />
@@ -895,6 +938,11 @@
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.4/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-10.0.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_android-10.0.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_apple-9.0.4/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-3.7.0/lib" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_windows-0.1.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/pinput-2.2.11/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0/lib" />
       <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2/lib" />

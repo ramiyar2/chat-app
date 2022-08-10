@@ -1,3 +1,5 @@
+import 'package:chat_app/screens/other/audio_call.dart';
+import 'package:chat_app/screens/other/video_call.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -67,7 +69,13 @@ class Contact extends StatelessWidget {
                         child: Row(
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            VideoCallScreen()));
+                              },
                               icon: Image.network(
                                 _video,
                                 width: 28,
@@ -75,7 +83,13 @@ class Contact extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            AudioCallScreen()));
+                              },
                               icon: Image.network(
                                 _call,
                                 width: 28,

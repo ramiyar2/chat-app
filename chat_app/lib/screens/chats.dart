@@ -102,7 +102,7 @@ Container Chats(Size size, BuildContext context) {
                 context,
                 data['frindName'],
                 data['frindUid'],
-                'https://images.hdqwalls.com/download/flutter-logo-4k-qn-1920x1080.jpg'),
+                'https://th.bing.com/th/id/R.d7d10f96034215f7a3f8af32d16ce89c?rik=vt6u9E3WIjbu%2fQ&pid=ImgRaw&r=0'),
             title: Text(data['frindName']),
             subtitle: Text(
               data['msg'],

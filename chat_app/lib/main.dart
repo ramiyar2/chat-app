@@ -50,7 +50,6 @@ class _SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // return Signin() number == null ? Signin() : HomePage();
     return Signin();
-    ;
   }
 }
 

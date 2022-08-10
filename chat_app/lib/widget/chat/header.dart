@@ -1,3 +1,5 @@
+import 'package:chat_app/screens/other/audio_call.dart';
+import 'package:chat_app/screens/other/video_call.dart';
 import 'package:flutter/material.dart';
 import '../../data/color.dart';
 import '../../data/icons.dart';
@@ -48,7 +50,10 @@ Container header(context, friendName, String frindProfile) {
         child: Row(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => VideoCallScreen()));
+              },
               icon: Image.network(
                 video,
                 width: 28,
@@ -56,7 +61,10 @@ Container header(context, friendName, String frindProfile) {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AudioCallScreen()));
+              },
               icon: Image.network(
                 call,
                 width: 28,
