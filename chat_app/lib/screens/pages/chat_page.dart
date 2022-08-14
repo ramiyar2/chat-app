@@ -2,6 +2,7 @@ import 'package:chat_app/data/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../server/chatUid.dart';
 import '../../widget/chat/chat_bubbles.dart';
 import '../../widget/chat/header.dart';
 import '../../widget/chat/new_messages.dart';
@@ -27,14 +28,16 @@ class _ChatPageState extends State<ChatPage> {
   final friendUid;
   final frindProfile;
   final currentUser = FirebaseAuth.instance.currentUser!.uid;
+  final currentUserName = FirebaseAuth.instance.currentUser?.displayName;
+  late final chatId;
   var chatDocId;
   _ChatPageState(this.friendName, this.friendUid, this.frindProfile);
-
-  @override
-  void initState() {
-    super.initState();
+  createChat() {
     chats
-        .where('users', isEqualTo: {currentUser: null, friendUid: null})
+        .where('users', isEqualTo: {
+          currentUser: null,
+          friendUid: null,
+        })
         .limit(1)
         .get()
         .then((QuerySnapshot snapshot) {
@@ -43,14 +46,19 @@ class _ChatPageState extends State<ChatPage> {
           } else {
             chats.add({
               'users': {currentUser: null, friendUid: null},
-              'names': {
-                currentUser: FirebaseAuth.instance.currentUser?.displayName,
-                friendUid: friendName
-              },
+              'names': {currentUser: currentUserName, friendUid: friendName},
+              'chatId': chatId
             }).then((value) => chatDocId = value);
           }
         })
         .onError((error, stackTrace) => null);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    chatId = createChatId(currentUserName, friendName);
+    createChat();
   }
 
   @override
@@ -71,9 +79,10 @@ class _ChatPageState extends State<ChatPage> {
                     fit: BoxFit.cover)),
             child: Column(
               children: [
-                header(context, friendName, frindProfile.toString()),
-                chatBubble(chatDocId, friendUid),
-                newMsg(context, chats, chatDocId, currentUser, friendName),
+                header(context, friendName.toString(), frindProfile.toString(),
+                    chatId.toString()),
+                chatBubble(chatId, friendUid),
+                newMsg(context, chats, chatId, currentUser, friendName),
               ],
             ),
           ),

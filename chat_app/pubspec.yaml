@@ -50,6 +50,7 @@ dependencies:
   flutter_mobx: ^2.0.6+1
   agora_rtc_engine: ^5.3.0
   permission_handler: ^10.0.0
+  http: ^0.13.5
   
 
 dev_dependencies:

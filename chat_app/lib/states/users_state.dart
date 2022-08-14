@@ -143,9 +143,6 @@ abstract class _UsersState with Store {
 
   void createOrUpdateUserInFirestore(name) {
     FirebaseAuth.instance.currentUser?.updateDisplayName(name.toString());
-    print('++++++++++++++++++++++++++++++++++++++++++++++' +
-        profileUrl.toString() +
-        '----------------------------------------------');
     FirebaseAuth.instance.currentUser?.updatePhotoURL(profileUrl.toString());
     var docId;
     this

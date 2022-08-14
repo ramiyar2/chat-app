@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../data/color.dart';
 import '../../data/icons.dart';
 
-Container header(context, friendName, String frindProfile) {
+Container header(context, friendName, String frindProfile, String callUid) {
   return Container(
     alignment: Alignment.center,
     width: double.infinity,
@@ -51,8 +51,12 @@ Container header(context, friendName, String frindProfile) {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => VideoCallScreen()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VideoCallScreen(callUid),
+                  ),
+                );
               },
               icon: Image.network(
                 video,
@@ -62,8 +66,10 @@ Container header(context, friendName, String frindProfile) {
             ),
             IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AudioCallScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AudioCallScreen(callUid)));
               },
               icon: Image.network(
                 call,

@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../data/color.dart';
 import '../server/callChatScreen.dart';
+import '../server/chatUid.dart';
 import '../states/lib.dart';
 
 class Contact extends StatelessWidget {
@@ -24,6 +25,8 @@ class Contact extends StatelessWidget {
 
   Container ContactsList(String _video, String _call) {
     final currentUser = FirebaseAuth.instance.currentUser?.uid;
+    final currentUserName = FirebaseAuth.instance.currentUser?.displayName;
+    late String chatId;
     return Container(
       margin: EdgeInsets.only(top: 20),
       height: 600,
@@ -70,11 +73,13 @@ class Contact extends StatelessWidget {
                           children: [
                             IconButton(
                               onPressed: () {
+                                chatId = createChatId(
+                                    currentUserName, data['userName']);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            VideoCallScreen()));
+                                            VideoCallScreen(chatId)));
                               },
                               icon: Image.network(
                                 _video,
@@ -84,11 +89,13 @@ class Contact extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {
+                                chatId = createChatId(
+                                    currentUserName, data['userName']);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            AudioCallScreen()));
+                                            AudioCallScreen(chatId)));
                               },
                               icon: Image.network(
                                 _call,

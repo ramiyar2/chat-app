@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:http/http.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 
-import '../../server/agora_manager .dart';
-
 class AudioCallScreen extends StatefulWidget {
-  const AudioCallScreen({Key? key}) : super(key: key);
+  String channelName;
+  AudioCallScreen(this.channelName, {Key? key}) : super(key: key);
 
   @override
   State<AudioCallScreen> createState() => _AudioCallScreenState();
@@ -17,6 +18,7 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
   late int _remoteUid = 0;
   late RtcEngine _engine;
   late String _channelId;
+  String appId = 'c1aebea155444d2aa1604dd2e6389b5c';
 
   @override
   void initState() {
@@ -51,8 +53,18 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
   }
 
   Future<void> initAgora() async {
+// get token
+    final link =
+        'https://agora-node-tokenserver.ramyaryusf.repl.co/access_token?channelName=${widget.channelName}';
+    Response _response = await get(Uri.parse(link));
+    Map data = jsonDecode(_response.body);
+    String token = data['token'];
+
+// permission request
     await [Permission.microphone, Permission.camera].request();
-    _engine = await RtcEngine.create(AgoraManager.appId);
+
+    //join a channel
+    _engine = await RtcEngine.create(appId);
     _engine.enableVideo();
     _engine.setEventHandler(
       RtcEngineEventHandler(
@@ -63,7 +75,7 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
           print('remote user $uid joined successfully');
           setState(() {
             _remoteUid = uid;
-            _channelId = AgoraManager.channelName;
+            _channelId = widget.channelName;
           });
         },
         userOffline: (int uid, UserOfflineReason reason) {
@@ -73,8 +85,7 @@ class _AudioCallScreenState extends State<AudioCallScreen> {
         },
       ),
     );
-    await _engine.joinChannel(
-        AgoraManager.token, AgoraManager.channelName, null, 0);
+    await _engine.joinChannel(token, widget.channelName, null, 0);
   }
 
   Widget _renderRemoteAudio() {
