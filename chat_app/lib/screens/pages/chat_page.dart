@@ -47,7 +47,8 @@ class _ChatPageState extends State<ChatPage> {
             chats.add({
               'users': {currentUser: null, friendUid: null},
               'names': {currentUser: currentUserName, friendUid: friendName},
-              'chatId': chatId
+              'chatId': chatId,
+              'friendUid': friendUid
             }).then((value) => chatDocId = value);
           }
         })
@@ -82,7 +83,9 @@ class _ChatPageState extends State<ChatPage> {
                 header(context, friendName.toString(), frindProfile.toString(),
                     chatId.toString()),
                 chatBubble(chatId, friendUid),
-                newMsg(context, chats, chatId, currentUser, friendName),
+                NewMsg(chats, chatId, currentUser, friendName),
+                // newMsg(
+                //     context, chats, chatId, currentUser, friendName, getIcon),
               ],
             ),
           ),

@@ -162,6 +162,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  contact_picker_platform_interface:
+    dependency: transitive
+    description:
+      name: contact_picker_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.7.0"
+  contact_picker_web:
+    dependency: transitive
+    description:
+      name: contact_picker_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.7.0"
   convert:
     dependency: transitive
     description:
@@ -225,6 +239,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -321,6 +342,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.7"
+  flutter_sound:
+    dependency: "direct main"
+    description:
+      name: flutter_sound
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.2.13"
+  flutter_sound_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_sound_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.2.13"
+  flutter_sound_web:
+    dependency: transitive
+    description:
+      name: flutter_sound_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.2.13"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -331,6 +373,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttercontactpicker:
+    dependency: "direct main"
+    description:
+      name: fluttercontactpicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.7.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -338,13 +387,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-  get:
-    dependency: "direct main"
-    description:
-      name: get
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.6.5"
   glob:
     dependency: transitive
     description:
@@ -478,6 +520,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   logging:
     dependency: transitive
     description:
@@ -534,6 +583,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   package_config:
     dependency: transitive
     description:
@@ -548,6 +604,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
+  path_provider:
+    dependency: transitive
+    description:
+      name: path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.11"
+  path_provider_android:
+    dependency: transitive
+    description:
+      name: path_provider_android
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.19"
+  path_provider_ios:
+    dependency: transitive
+    description:
+      name: path_provider_ios
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.11"
   path_provider_linux:
     dependency: transitive
     description:
@@ -555,6 +632,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.7"
+  path_provider_macos:
+    dependency: transitive
+    description:
+      name: path_provider_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.6"
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -639,6 +723,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  provider:
+    dependency: transitive
+    description:
+      name: provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.3"
   pub_semver:
     dependency: transitive
     description:
@@ -653,6 +744,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -777,6 +875,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  synchronized:
+    dependency: transitive
+    description:
+      name: synchronized
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0+2"
   term_glyph:
     dependency: transitive
     description:
@@ -805,6 +910,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
   vector_math:
     dependency: transitive
     description:

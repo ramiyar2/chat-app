@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:chat_app/states/lib.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -78,6 +80,20 @@ Container Title(String title) {
 }
 
 Container Chats(Size size, BuildContext context) {
+  // sort() {
+  //   var massageList = chatState.message.values.toList();
+  //   late List newList;
+  //   for (int i = 0; i < chatState.message.length; i++) {
+  //     if (i + 1 < chatState.message.length) {
+  //       bool logic =
+  //           massageList[i]['time'].compareTo(massageList[i + 1]['time']) > 0;
+  //       print(logic.toString() + '*-');
+  //     }
+
+  //     print(massageList[i]['time'].toDate().toString() + '*-' + i.toString());
+  //   }
+  // }
+  // sort();
   return Container(
     margin: const EdgeInsets.only(
       top: 10,
@@ -98,11 +114,8 @@ Container Chats(Size size, BuildContext context) {
             ),
           ),
           child: ListTile(
-            onTap: () => callChatScreen(
-                context,
-                data['frindName'],
-                data['frindUid'],
-                'https://th.bing.com/th/id/R.d7d10f96034215f7a3f8af32d16ce89c?rik=vt6u9E3WIjbu%2fQ&pid=ImgRaw&r=0'),
+            onTap: () => callChatScreen(context, data['frindName'],
+                data['frindUid'], data["friendProfileImageUrl"]),
             title: Text(data['frindName']),
             subtitle: Text(
               data['msg'],
@@ -112,53 +125,62 @@ Container Chats(Size size, BuildContext context) {
                     : green,
               ),
             ),
-            // trailing: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   crossAxisAlignment: CrossAxisAlignment.end,
-            //   children: [
-            //     Text(
-            //       data['time'].toString(),
-            //       style: TextStyle(
-            //         color: data['time'] == null
-            //             ? Color.fromRGBO(255, 255, 255, 0.5)
-            //             : green,
-            //       ),
-            //     ),
-            //     SizedBox(
-            //       height: 10,
-            //     ),
-            //     //   Container(
-            //     //     width: 25,
-            //     //     height: 25,
-            //     //     child: chats[index]["unread"] == null
-            //     //         ? Container()
-            //     //         : CircleAvatar(
-            //     //             backgroundColor: green,
-            //     //             child: Text(
-            //     //               chats[index]["unread"].toString(),
-            //     //               style: TextStyle(color: darker_blue),
-            //     //             ),
-            //     //           ),
-            //     //   ),
-            //   ],
-            // ),
-            // leading: Container(
-            //   width: 60,
-            //   height: 60,
-            //   decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(60),
-            //       image: DecorationImage(
-            //         fit: BoxFit.cover,
-            //         image: NetworkImage(
-            //           chats[index]["img"],
-            //         ),
-            //       )),
-            // ),
+            trailing: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  (data['time'].toDate().year == DateTime.now().year &&
+                          data['time'].toDate().month == DateTime.now().month &&
+                          data['time'].toDate().day == DateTime.now().day &&
+                          data['time'].toDate().hour == DateTime.now().hour &&
+                          data['time'].toDate().minute == DateTime.now().minute)
+                      ? "now"
+                      : data['time'].toDate().hour.toString() +
+                          ' : ' +
+                          data['time'].toDate().minute.toString(),
+                  style: TextStyle(
+                    color: data['time'] == null
+                        ? Color.fromRGBO(255, 255, 255, 0.5)
+                        : green,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                // Container(
+                //   width: 25,
+                //   height: 25,
+                //   child:
+                //       // chats[index]["unread"] == null
+                //       //     ? Container()
+                //       //     :
+                //       CircleAvatar(
+                //     backgroundColor: green,
+                //     child: Text(
+                //       "1",
+                //       style: TextStyle(color: darker_blue),
+                //     ),
+                //   ),
+                // ),
+              ],
+            ),
+            leading: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(60),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      data["friendProfileImageUrl"],
+                    ),
+                  )),
+            ),
           ),
         );
       }).toList(),
     ),
-
     // child: ListView.builder(
     //   itemCount: chats.length,
     //   itemBuilder: (BuildContext context, int index) {

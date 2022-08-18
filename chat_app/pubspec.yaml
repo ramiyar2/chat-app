@@ -40,7 +40,6 @@ dependencies:
   cloud_firestore: ^3.3.0
   firebase_auth: ^3.4.2
   firebase_storage: ^10.3.2
-  get: ^4.6.5
   pinput: ^2.2.11
   modal_progress_hud_nsn: ^0.2.1
   shared_preferences: ^2.0.15
@@ -51,7 +50,9 @@ dependencies:
   agora_rtc_engine: ^5.3.0
   permission_handler: ^10.0.0
   http: ^0.13.5
-  
+  file_picker: ^5.0.1
+  fluttercontactpicker: ^4.7.0
+  flutter_sound: ^9.2.13
 
 dev_dependencies:
   flutter_test:

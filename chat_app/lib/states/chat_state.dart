@@ -18,37 +18,58 @@ abstract class _ChatState with Store {
   @observable
   Map<String, dynamic> message = ObservableMap();
 
+  void getMassagese(friendUid, chatId, profileImageUrl) {
+    chats.doc(chatId).collection('messages').snapshots().forEach((doc) {
+      FirebaseFirestore.instance
+          .collection('chats/$chatId/messages')
+          .limit(1)
+          .orderBy('createdOn', descending: true)
+          .snapshots()
+          .listen((QuerySnapshot snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          message[chatId] = {
+            'msg': snapshot.docs.first['msg'],
+            'time': snapshot.docs.first['createdOn'],
+            'frindName': snapshot.docs.first['frindName'],
+            'frindUid': snapshot.docs.first['uid'],
+            'friendProfileImageUrl': profileImageUrl,
+          };
+        }
+      });
+    });
+  }
+
+  // get profile image and massages
+  void getFullInfo(friendUid, chatId) {
+    var profileImageUrl;
+    FirebaseFirestore.instance
+        .collection('users')
+        .where('uid', isEqualTo: friendUid)
+        .snapshots()
+        .listen((QuerySnapshot snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        profileImageUrl = snapshot.docs.first['profileImageUrl'];
+        getMassagese(friendUid, chatId, profileImageUrl);
+      }
+    });
+  }
+
   @action
   void RefrenceChatForCurrentUser() {
-    var chatDocs = [];
+    var chatId;
+    var friendUid;
     chats
         .where('users.$currentUser', isNull: true)
         .snapshots()
         .listen((QuerySnapshot snapshot) {
-      chatDocs = snapshot.docs.map((DocumentSnapshot documentSnapshot) {
+      snapshot.docs.map((DocumentSnapshot documentSnapshot) {
         Map<String, dynamic> data =
             documentSnapshot.data() as Map<String, dynamic>;
-        Map<String, dynamic> names = data['names'];
-        names.remove(currentUser);
-        return {'docId': documentSnapshot.id, 'name': names.values.first};
+        chatId = data['chatId'];
+        friendUid = data['friendUid'];
+        getFullInfo(friendUid, chatId);
+        return data['chatId'];
       }).toList();
-      chatDocs.forEach((doc) {
-        FirebaseFirestore.instance
-            .collection('chats/${doc['docId']}/messages')
-            .orderBy('createdOn', descending: true)
-            .limit(1)
-            .snapshots()
-            .listen((QuerySnapshot snapshot) {
-          if (snapshot.docs.isNotEmpty) {
-            message[doc['name']] = {
-              'msg': snapshot.docs.first['msg'],
-              'time': snapshot.docs.first['createdOn'],
-              'frindName': doc['name'],
-              'frindUid': snapshot.docs.first['uid'],
-            };
-          }
-        });
-      });
     });
   }
 }

@@ -48,7 +48,9 @@ Row Bubble(BuildContext context) {
     children: [
       Container(
         margin: getMargin(data['uid']),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: data['isImage']
+            ? const EdgeInsets.symmetric(vertical: 10, horizontal: 10)
+            : const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         constraints: BoxConstraints(
           maxWidth: MediaQuery.of(context).size.width * 0.7,
         ),
@@ -58,26 +60,39 @@ Row Bubble(BuildContext context) {
           border: Border.all(
               color: getColor(data['uid'], isBorder: true), width: 1),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: getAligment(data['uid'], isColumn: true),
-          children: [
-            Text(
-              data['msg'],
-              style: TextStyle(
-                  color: getColor(data['uid'], isText: true),
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              '10:10 PM',
-              style: TextStyle(color: white_op, fontSize: 10),
-            ),
-          ],
-        ),
+        child: data['isImage']
+            ? Container(
+                width: double.infinity,
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: getBorderRadios(data['uid']),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(data['msg']),
+                  ),
+                ),
+                child: null,
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: getAligment(data['uid'], isColumn: true),
+                children: [
+                  Text(
+                    data['msg'],
+                    style: TextStyle(
+                        color: getColor(data['uid'], isText: true),
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '10:10 PM',
+                    style: TextStyle(color: white_op, fontSize: 10),
+                  ),
+                ],
+              ),
       ),
     ],
   );
