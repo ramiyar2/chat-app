@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   agora_rtc_engine
+  audioplayers_windows
   modal_progress_hud_nsn
   permission_handler_windows
   smart_auth

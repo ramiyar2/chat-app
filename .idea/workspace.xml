@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="add profile image">
-      <change beforePath="$PROJECT_DIR$/.idea/chat-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chat-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/sound_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/chats.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/contact.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/contact.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/other/audio_call.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/other/audio_call.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/other/video_call.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/other/video_call.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/widget/chat/header.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/header.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/server/send_massages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/server/send_massages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/widget/chat/chat_bubbles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/chat_bubbles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/new_messages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +56,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
@@ -58,7 +65,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/chat_app/firebase_emulator.bat" />
-    <property name="settings.editor.selected.configurable" value="emulator" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager" selected="Flutter.main.dart">

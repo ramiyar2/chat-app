@@ -53,6 +53,9 @@ dependencies:
   file_picker: ^5.0.1
   fluttercontactpicker: ^4.7.0
   flutter_sound: ^9.2.13
+  music_visualizer: ^1.0.2
+  audioplayers: ^1.0.1
+  date_format: ^2.0.6
 
 dev_dependencies:
   flutter_test:

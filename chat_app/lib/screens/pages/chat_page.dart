@@ -82,10 +82,11 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 header(context, friendName.toString(), frindProfile.toString(),
                     chatId.toString()),
-                chatBubble(chatId, friendUid),
+                ChatBubble(
+                  chatDocId: chatId,
+                  friendUid: friendUid,
+                ),
                 NewMsg(chats, chatId, currentUser, friendName),
-                // newMsg(
-                //     context, chats, chatId, currentUser, friendName, getIcon),
               ],
             ),
           ),

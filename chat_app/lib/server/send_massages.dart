@@ -10,6 +10,7 @@ sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
       'isFile': false,
       'isImage': false,
       'isContact': false,
+      'isAudio': false,
       'file': null,
       'contact': null,
     });
@@ -22,6 +23,7 @@ sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
       'isFile': true,
       'isImage': false,
       'isContact': false,
+      'isAudio': false,
       'file': msg,
       'contact': null,
     });
@@ -35,10 +37,23 @@ sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
       'isFile': false,
       'isImage': true,
       'isContact': false,
+      'isAudio': false,
       'file': msg,
       'contact': null,
     });
   } else if (type == 'Audio') {
+    chats.doc(chatDocId).collection('messages').add({
+      'createdOn': FieldValue.serverTimestamp(),
+      'uid': currentUser,
+      'frindName': friendName,
+      'msg': msg,
+      'isFile': false,
+      'isImage': false,
+      'isContact': false,
+      'isAudio': true,
+      'file': msg,
+      'contact': null,
+    });
   } else if (type == 'Location') {
   } else if (type == 'Contact') {}
 }

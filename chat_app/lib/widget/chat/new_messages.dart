@@ -1,7 +1,10 @@
+import 'dart:io';
+import 'dart:math';
+import 'package:chat_app/server/uplaod_attachment.dart';
 import 'package:chat_app/widget/chat/attachment.dart';
+import 'package:chat_app/widget/chat/sound_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:http/http.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../data/color.dart';
 import '../../server/send_massages.dart';
@@ -23,7 +26,9 @@ class _NewMsgState extends State<NewMsg> {
   TextEditingController massController = TextEditingController();
   bool isNotAudioIcon = false;
   Icon icon = const Icon(Icons.attach_file_rounded);
-  final recorder = FlutterSoundRecorder();
+  late String _fileName;
+  //late FlutterSoundRecorder _myRecorder;
+  FlutterSoundRecorder recorder = FlutterSoundRecorder();
   @override
   void initState() {
     super.initState();
@@ -45,12 +50,26 @@ class _NewMsgState extends State<NewMsg> {
     await recorder.setSubscriptionDuration(Duration(milliseconds: 10));
   }
 
+  randomNumber() {
+    var random = new Random();
+
+    int min = 10;
+
+    int max = 1000;
+
+    int result = min + random.nextInt(max - min);
+    return result.toString();
+  }
+
   Future record() async {
     // Request Microphone permission if needed
     PermissionStatus status = await Permission.microphone.request();
     if (status != PermissionStatus.granted)
       throw RecordingPermissionException("Microphone permission not granted");
-    await recorder.startRecorder(toFile: widget.chatDocId.toString());
+    _fileName = widget.chatDocId.toString() + randomNumber();
+    await recorder.startRecorder(
+      toFile: '$_fileName.mp4',
+    );
     setState(() {
       icon = const Icon(Icons.stop);
     });
@@ -58,6 +77,8 @@ class _NewMsgState extends State<NewMsg> {
 
   Future stop() async {
     final path = await recorder.stopRecorder();
+    UploadFile(File(path.toString()), "Audio", _fileName, widget.chats,
+        widget.chatDocId, widget.currentUser, widget.friendName);
     setState(() {
       icon = const Icon(Icons.mic);
     });
@@ -82,102 +103,95 @@ class _NewMsgState extends State<NewMsg> {
       margin: const EdgeInsets.symmetric(vertical: 10),
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width * 0.9,
+      height: MediaQuery.of(context).size.width * 0.15,
       decoration: BoxDecoration(
           color: dark_blue_op, borderRadius: BorderRadius.circular(20)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: recorder.isRecording
-            ? [
-                StreamBuilder(
-                  stream: recorder.onProgress,
-                  builder:
-                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                    final duration = snapshot.hasData
-                        ? snapshot.data!.duration
-                        : Duration.zero;
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child:
-                          Text("${duration.inMinutes} : ${duration.inSeconds}"),
-                    );
-                  },
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                IconButton(
-                    onPressed: () => delete(),
-                    icon: const Icon(Icons.delete_rounded)),
-                IconButton(
-                    onPressed: () => pause(),
-                    icon: recorder.isPaused
-                        ? const Icon(Icons.play_arrow_rounded)
-                        : const Icon(Icons.pause_rounded)),
-                IconButton(
-                    onPressed: () => stop(),
-                    icon: const Icon(Icons.send_rounded)),
-              ]
-            : [
-                IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.emoji_emotions)),
-                Expanded(
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    decoration: const InputDecoration(
-                      label: Text('send a message ...'),
-                    ),
-                    controller: massController,
-                    onSubmitted: (val) => sendMsg(
-                        val,
-                        widget.chats,
-                        widget.chatDocId,
-                        widget.currentUser,
-                        widget.friendName),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    if (!isNotAudioIcon) {
-                      AddAttachment(context, widget.chats, widget.chatDocId,
-                          widget.currentUser, widget.friendName);
-                    } else {
-                      if (recorder.isRecording) {
-                        stop();
-                      } else {
-                        record();
-                      }
-                    }
-                  },
-                  onLongPress: () => getIcon(),
-                  child: Ink(
-                    child: icon,
-                  ),
-                ),
-                IconButton(
-                    onPressed: () => sendMsg(
-                        massController.text,
-                        widget.chats,
-                        widget.chatDocId,
-                        widget.currentUser,
-                        widget.friendName),
-                    icon: const Icon(Icons.send)),
-              ],
+        children: recorder.isRecording ? RecordBar : NormalBar(context),
       ),
     );
+  }
+
+  List<Widget> NormalBar(BuildContext context) {
+    return [
+      IconButton(onPressed: () {}, icon: const Icon(Icons.emoji_emotions)),
+      Expanded(
+        child: TextField(
+          keyboardType: TextInputType.text,
+          decoration: const InputDecoration(
+            label: Text('send a message ...'),
+          ),
+          controller: massController,
+          onSubmitted: (val) => sendMsg(val, widget.chats, widget.chatDocId,
+              widget.currentUser, widget.friendName),
+        ),
+      ),
+      InkWell(
+        onTap: () {
+          if (!isNotAudioIcon) {
+            AddAttachment(context, widget.chats, widget.chatDocId,
+                widget.currentUser, widget.friendName);
+          } else if (isNotAudioIcon) {
+            if (recorder.isRecording) {
+              stop();
+            } else {
+              record();
+            }
+          }
+        },
+        onLongPress: () => getIcon(),
+        child: Ink(
+          child: icon,
+        ),
+      ),
+      IconButton(
+          onPressed: () => sendMsg(massController.text, widget.chats,
+              widget.chatDocId, widget.currentUser, widget.friendName),
+          icon: const Icon(Icons.send)),
+    ];
+  }
+
+  List<Widget> get RecordBar {
+    return [
+      StreamBuilder(
+        stream: recorder.onProgress,
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          final duration =
+              snapshot.hasData ? snapshot.data!.duration : Duration.zero;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text("${duration.inMinutes} : ${duration.inSeconds}"),
+          );
+        },
+      ),
+      Expanded(
+        child: SoundBar(),
+      ),
+      IconButton(
+          onPressed: () => delete(), icon: const Icon(Icons.delete_rounded)),
+      IconButton(
+          onPressed: () => pause(),
+          icon: recorder.isPaused
+              ? const Icon(Icons.play_arrow_rounded)
+              : const Icon(Icons.pause_rounded)),
+      IconButton(onPressed: () => stop(), icon: const Icon(Icons.send_rounded)),
+    ];
   }
 
   void getIcon() {
     if (!isNotAudioIcon) {
       setState(() {
-        icon = const Icon(Icons.attach_file_rounded);
-        isNotAudioIcon = !isNotAudioIcon;
+        icon = Icon(Icons.attach_file_rounded);
       });
     } else {
       setState(() {
-        icon = const Icon(Icons.mic);
-        isNotAudioIcon = !isNotAudioIcon;
+        icon = Icon(Icons.mic);
       });
     }
+    setState(() {
+      isNotAudioIcon = !isNotAudioIcon;
+    });
   }
 
   void sendMsg(String msg, chats, chatDocId, currentUser, friendName) {
