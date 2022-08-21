@@ -1,5 +1,4 @@
-![](screenshots/Logo.png)
-
+<img src="screenshots/Logo.png"  alt="Chatify" width="70">
 # Chat App
 <div align="center">
 
