@@ -28,7 +28,7 @@ In the command line:
     $ cd chat_app/
     $ flutter run
 
-#### For running on Android or IOS emulator   
+#### 🤖 For running on Android or IOS emulator   
 
     Make sure you have an emulator installed and running.
     Run the following command in your terminal.
@@ -45,7 +45,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## Features
+## ✅ Features
 - User Authentication.
 - Realtime chat.
 - Send text messages, stickers, GIFs & Images.
@@ -56,7 +56,7 @@ samples, guidance on mobile development, and a full API reference.
 - instant messages
 - Video and voice calling.
 
-## Tools used
+## 💻 Tools used
 - [Figma](https://www.figma.com/)
 - [Flutter & Dart](http://flutter.dev)
 - [Firebase  Flutter](https://firebase.google.com/)
@@ -73,7 +73,7 @@ samples, guidance on mobile development, and a full API reference.
 [![Linkedin Badge](https://img.shields.io/badge/-Ramiyar%20yusf-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/ramyar-yusf-393a40203/)
 <br><br>
 
-# License
+# 📄 License
 ```
 MIT License
 Copyright (c) 2020 Ramiyar yusf
