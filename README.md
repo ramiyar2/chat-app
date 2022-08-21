@@ -1,3 +1,5 @@
+![](screenshots/Logo.png)
+
 # Chat App
 <div align="center">
 
