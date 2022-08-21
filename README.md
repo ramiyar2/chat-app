@@ -24,10 +24,7 @@ Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It 
 
 In the command line:
 
-    
-    ```
-    git clone https://github.com/ramiyar2/chat-app.git
-    ```
+    $ git clone https://github.com/ramiyar2/chat-app.git
     
    cd chat_app/
     $ flutter run
