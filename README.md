@@ -1,5 +1,7 @@
-<img src="screenshots/Logo.png"  alt="Chatify" width="70">
+<img src="screenshots/Logo.png"  alt="Chatify" width="100">
+
 # Chat App
+
 <div align="center">
 
 [![](https://img.shields.io/badge/Made_with-Flutter-blue?style=for-the-badge&logo=flutter)](https://flutter.dev/docs)
