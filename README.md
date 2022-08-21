@@ -26,7 +26,7 @@ In the command line:
 
     $ git clone https://github.com/ramiyar2/chat-app.git
     
-   cd chat_app/
+    $ cd chat_app/
     $ flutter run
 
 #### For running on Android or IOS emulator   
