@@ -1,6 +1,6 @@
 <img src="screenshots/Logo.png"  alt="Chatify" width="100">
 
-# Chat App
+# ⭐ Chat App
 
 <div align="center">
 
