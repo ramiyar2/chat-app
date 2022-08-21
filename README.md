@@ -12,6 +12,7 @@
 
 Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It is clone of whatsapp messenger.User can create stories,chat and search in real time.
 
+<br><br>  
 
 ## 📱 Demo
 
@@ -19,6 +20,8 @@ Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It 
 ![](screenshots/2.jpg)
 ![](screenshots/3.jpg)
 ![](screenshots/4.jpg)
+
+<br><br>
 
 ## ⤵ Installation
 
@@ -45,6 +48,8 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+<br><br>
+
 ## ✅ Features
 - User Authentication.
 - Realtime chat.
@@ -56,12 +61,16 @@ samples, guidance on mobile development, and a full API reference.
 - instant messages
 - Video and voice calling.
 
+<br><br>
+
 ## 💻 Tools used
 - [Figma](https://www.figma.com/)
 - [Flutter & Dart](http://flutter.dev)
 - [Firebase  Flutter](https://firebase.google.com/)
 - [MobX State Management](https://pub.dev/packages/mobx)
 - [Shared Preferences](https://pub.dev/packages/shared_preferences)
+
+<br><br>
 
 ## 📠 Reach Me 
 
