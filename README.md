@@ -13,14 +13,14 @@
 Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It is clone of whatsapp messenger.User can create stories,chat and search in real time.
 
 
-## Demo
+## 📱 Demo
 
 ![](screenshots/1.jpg)
 ![](screenshots/2.jpg)
 ![](screenshots/3.jpg)
 ![](screenshots/4.jpg)
 
-## Installation
+## ⤵ Installation
 
 In the command line:
 
