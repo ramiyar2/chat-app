@@ -1,9 +1,0 @@
-FullContact{ emails: [], 
-    phones: [PhoneNumber{number: +963 992 363 346}], 
-    addresses: [], 
-    note: null, 
-    company: null, 
-    sip: null, relations: [], 
-    customFields: [], 
-    photo: null
-}
