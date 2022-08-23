@@ -113,57 +113,6 @@ class Contact extends StatelessWidget {
                     return Container();
                 }).toList(),
               );
-              // return ListView.separated(
-              //     itemBuilder: (BuildContext context, int index) => ListTile(
-              //           title: Text(docs[index]['userName']),
-              //           subtitle: Text(
-              //             docs[index]['status'],
-              //             style: TextStyle(color: green_op),
-              //           ),
-              //           leading: Container(
-              //             width: 60,
-              //             height: 60,
-              //             decoration: BoxDecoration(
-              //                 borderRadius: BorderRadius.circular(60),
-              //                 image: DecorationImage(
-              //                   fit: BoxFit.cover,
-              //                   image: NetworkImage(
-              //                     docs[index]["profileImageUrl"],
-              //                   ),
-              //                 )),
-              //           ),
-              //           trailing: SizedBox(
-              //             width: 100,
-              //             child: Row(
-              //               children: [
-              //                 IconButton(
-              //                   onPressed: () {},
-              //                   icon: Image.network(
-              //                     _video,
-              //                     width: 28,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //                 IconButton(
-              //                   onPressed: () {},
-              //                   icon: Image.network(
-              //                     _call,
-              //                     width: 28,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //           onTap: () => callChatScreen(context,
-              //               docs[index]['userName'], docs[index]['uid']),
-              //         ),
-              //     separatorBuilder: (BuildContext context, int index) =>
-              //         SizedBox(
-              //           height: 20,
-              //         ),
-              //     itemCount: docs.length);
-
             }
             return Container();
           }),
