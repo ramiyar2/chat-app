@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d90a4745-8580-4859-951f-a4e56e01c7e8" name="Default Changelist" comment="add profile image">
       <change afterPath="$PROJECT_DIR$/chat_app/lib/widget/chat/sound_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/chat-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chat-app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/screens/pages/chat_page.dart" afterDir="false" />
@@ -308,6 +309,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="mobX build" />
     <MESSAGE value="mobX refresh" />
     <MESSAGE value="mobX watch" />

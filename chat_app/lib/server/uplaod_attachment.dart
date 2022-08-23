@@ -19,7 +19,6 @@ void UploadFile(File path, String type, String fileName, chats, chatDocId,
       case TaskState.success:
         msgUrlRef.getDownloadURL().then((value) {
           msgUrl = value;
-          print(value + "/*/+");
           sendMassage(type, chats, chatDocId, currentUser, friendName, msgUrl);
         });
         break;
