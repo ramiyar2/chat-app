@@ -17,7 +17,10 @@ Container header(context, friendName, String frindProfile, String callUid) {
         ),
         boxShadow: [BoxShadow(color: green, spreadRadius: 1)]),
     child: ListTile(
-      title: Text(friendName.toString()),
+      title: Text(
+        friendName.toString(),
+        style: TextStyle(color: Colors.white),
+      ),
       leading: SizedBox(
         width: 110,
         child: Row(
