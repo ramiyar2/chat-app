@@ -148,8 +148,6 @@ void pickeFile(String type, chats, chatDocId, currentUser, friendName) async {
     }
   } else if (type == 'Contact') {
     final FullContact contact = await FlutterContactPicker.pickFullContact();
-    if (contact != null) {
-      sendMassage(type, chats, chatDocId, currentUser, friendName, contact);
-    }
+    sendMassage(type, chats, chatDocId, currentUser, friendName, contact);
   }
 }
