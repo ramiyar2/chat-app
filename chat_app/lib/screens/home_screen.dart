@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:chat_app/data/theme.dart';
+
 import '../data/color.dart';
 import 'package:flutter/material.dart';
 import '../data/data.dart';
@@ -82,7 +84,7 @@ class _HomePageState extends State<HomePage> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Theme(),
+      theme: themeData1,
       home: Scaffold(
         bottomNavigationBar: NavigationBar(
             _bottomNavigationBarItem, bottomSelectedIndex, bottomTapped),
@@ -196,24 +198,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         label: label);
-  }
-
-  ThemeData Theme() {
-    return ThemeData(
-      fontFamily: 'Montserrat',
-      hintColor: dark_green,
-      primarySwatch: customColorGreen,
-      scaffoldBackgroundColor: green,
-      highlightColor: dark_blue,
-      splashColor: dark_green,
-      canvasColor: dark_blue,
-      textTheme: const TextTheme(
-        subtitle1: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
-      ),
-    );
   }
 
   SizedBox HeaderImg() {
