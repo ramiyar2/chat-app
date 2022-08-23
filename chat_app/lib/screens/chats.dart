@@ -80,20 +80,6 @@ Container Title(String title) {
 }
 
 Container Chats(Size size, BuildContext context) {
-  // sort() {
-  //   var massageList = chatState.message.values.toList();
-  //   late List newList;
-  //   for (int i = 0; i < chatState.message.length; i++) {
-  //     if (i + 1 < chatState.message.length) {
-  //       bool logic =
-  //           massageList[i]['time'].compareTo(massageList[i + 1]['time']) > 0;
-  //       print(logic.toString() + '*-');
-  //     }
-
-  //     print(massageList[i]['time'].toDate().toString() + '*-' + i.toString());
-  //   }
-  // }
-  // sort();
   return Container(
     margin: const EdgeInsets.only(
       top: 10,
@@ -181,80 +167,5 @@ Container Chats(Size size, BuildContext context) {
         );
       }).toList(),
     ),
-    // child: ListView.builder(
-    //   itemCount: chats.length,
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return Card(
-    //       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-    //       color: dark_blue,
-    //       shape: RoundedRectangleBorder(
-    //         borderRadius: BorderRadius.circular(10.0),
-    //         side: BorderSide(
-    //           color: chats[index]["unread"] == null
-    //               ? Color.fromARGB(0, 0, 0, 0)
-    //               : green,
-    //           width: 2.0,
-    //         ),
-    //       ),
-    //       child: ListTile(
-    //         // onTap: () => Navigator.push(
-    //         //     context,
-    //         //     MaterialPageRoute(
-    //         //         builder: (BuildContext context) => ChatPage())),
-    //         title: Text(chats[index]["userName"]),
-    //         subtitle: Text(
-    //           chats[index]["massage"],
-    //           style: TextStyle(
-    //             color: chats[index]["unread"] == null
-    //                 ? Color.fromRGBO(255, 255, 255, 0.5)
-    //                 : green,
-    //           ),
-    //         ),
-    //         trailing: Column(
-    //           mainAxisAlignment: MainAxisAlignment.center,
-    //           crossAxisAlignment: CrossAxisAlignment.end,
-    //           children: [
-    //             Text(
-    //               chats[index]["time"].toString(),
-    //               style: TextStyle(
-    //                 color: chats[index]["unread"] == null
-    //                     ? Color.fromRGBO(255, 255, 255, 0.5)
-    //                     : green,
-    //               ),
-    //             ),
-    //             SizedBox(
-    //               height: 10,
-    //             ),
-    //             Container(
-    //               width: 25,
-    //               height: 25,
-    //               child: chats[index]["unread"] == null
-    //                   ? Container()
-    //                   : CircleAvatar(
-    //                       backgroundColor: green,
-    //                       child: Text(
-    //                         chats[index]["unread"].toString(),
-    //                         style: TextStyle(color: darker_blue),
-    //                       ),
-    //                     ),
-    //             ),
-    //           ],
-    //         ),
-    //         leading: Container(
-    //           width: 60,
-    //           height: 60,
-    //           decoration: BoxDecoration(
-    //               borderRadius: BorderRadius.circular(60),
-    //               image: DecorationImage(
-    //                 fit: BoxFit.cover,
-    //                 image: NetworkImage(
-    //                   chats[index]["img"],
-    //                 ),
-    //               )),
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // ),
   );
 }

@@ -25,7 +25,7 @@ class Call extends StatelessWidget {
 
   Container CallsList(String _up, String _down, String _call) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       height: 600,
       child: ListView.separated(
           itemBuilder: (BuildContext context, int index) => ListTile(
@@ -38,7 +38,7 @@ class Call extends StatelessWidget {
                       color:
                           call[index]['answered'] == true ? green : Colors.red,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
@@ -67,7 +67,7 @@ class Call extends StatelessWidget {
                   ),
                 ),
               ),
-          separatorBuilder: (BuildContext context, int index) => SizedBox(
+          separatorBuilder: (BuildContext context, int index) => const SizedBox(
                 height: 20,
               ),
           itemCount: call.length),
