@@ -1,4 +1,6 @@
 import 'package:chat_app/widget/chat/chat-bubbles/audio.dart';
+import 'package:chat_app/widget/chat/chat-bubbles/contact.dart';
+import 'package:chat_app/widget/chat/chat-bubbles/file.dart';
 import 'package:chat_app/widget/chat/chat-bubbles/image.dart';
 import 'package:chat_app/widget/chat/chat-bubbles/text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -68,40 +70,12 @@ class ChatBubble extends StatelessWidget {
                         : data['isAudio']
                             ? AudioMsg(data: data)
                             : data['isFile']
-                                ? Container(
-                                    child: Column(
-                                      crossAxisAlignment: getAligment(
-                                          data['uid'],
-                                          isColumn: true,
-                                          currentUser: currentUser),
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                              color: white_op,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: Row(
-                                            children: [
-                                              Icon(Icons
-                                                  .document_scanner_rounded),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(data['file']),
-                                            ],
-                                          ),
-                                        ),
-                                        Text(
-                                          '10:10 PM',
-                                          style: TextStyle(
-                                              color: white_op, fontSize: 10),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                : TextMsg(
-                                    data: data, currentUser: currentUser)),
+                                ? FileMsg(data: data, currentUser: currentUser)
+                                : data['isContact']
+                                    ? ContactMsg(
+                                        data: data, currentUser: currentUser)
+                                    : TextMsg(
+                                        data: data, currentUser: currentUser)),
               ],
             );
           }).toList();

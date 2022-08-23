@@ -6,7 +6,7 @@ void UploadFile(File path, String type, String fileName, chats, chatDocId,
     currentUser, friendName) async {
   var msgUrl;
 
-  // Upload file
+  // Uploading file
   final msgUrlRef = await FirebaseStorage.instance
       .ref()
       .child('$currentUser/$type/$fileName');
@@ -19,7 +19,8 @@ void UploadFile(File path, String type, String fileName, chats, chatDocId,
       case TaskState.success:
         msgUrlRef.getDownloadURL().then((value) {
           msgUrl = value;
-          sendMassage(type, chats, chatDocId, currentUser, friendName, msgUrl);
+          sendMassage(type, chats, chatDocId, currentUser, friendName, msgUrl,
+              fileName: fileName);
         });
         break;
       case TaskState.canceled:

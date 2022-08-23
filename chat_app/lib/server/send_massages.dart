@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
+sendMassage(String type, chats, chatDocId, currentUser, friendName, msg,
+    {fileName}) {
   if (type == 'mas') {
     chats.doc(chatDocId).collection('messages').add({
       'createdOn': FieldValue.serverTimestamp(),
@@ -24,10 +25,9 @@ sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
       'isImage': false,
       'isContact': false,
       'isAudio': false,
-      'file': msg,
+      'file': fileName,
       'contact': null,
     });
-  } else if (type == 'Camera') {
   } else if (type == 'Gallery' || type == 'Camera') {
     chats.doc(chatDocId).collection('messages').add({
       'createdOn': FieldValue.serverTimestamp(),
@@ -55,5 +55,25 @@ sendMassage(String type, chats, chatDocId, currentUser, friendName, msg) {
       'contact': null,
     });
   } else if (type == 'Location') {
-  } else if (type == 'Contact') {}
+  } else if (type == 'Contact') {
+    chats.doc(chatDocId).collection('messages').add({
+      'createdOn': FieldValue.serverTimestamp(),
+      'uid': currentUser,
+      'frindName': friendName,
+      'msg': msg.toString(),
+      'isFile': false,
+      'isImage': false,
+      'isContact': true,
+      'isAudio': false,
+      'file': null,
+      'Contact': {
+        'firstName': msg.name!.firstName,
+        'middleName': msg.name!.middleName,
+        'lastName': msg.name!.lastName,
+        'nickName': msg.name!.nickName,
+        'eamil': msg.emails.toString(),
+        'phone': msg.phones.toString(),
+      },
+    });
+  }
 }

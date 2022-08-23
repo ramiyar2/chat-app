@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chat_app/server/send_massages.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -147,6 +148,8 @@ void pickeFile(String type, chats, chatDocId, currentUser, friendName) async {
     }
   } else if (type == 'Contact') {
     final FullContact contact = await FlutterContactPicker.pickFullContact();
-    print(contact);
+    if (contact != null) {
+      sendMassage(type, chats, chatDocId, currentUser, friendName, contact);
+    }
   }
 }

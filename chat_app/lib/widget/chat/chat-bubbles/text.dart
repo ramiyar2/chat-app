@@ -20,7 +20,7 @@ class TextMsg extends StatelessWidget {
           style: TextStyle(
               color:
                   getColor(data['uid'], isText: true, currentUser: currentUser),
-              fontSize: 15,
+              fontSize: 10,
               fontWeight: FontWeight.bold),
         ),
         const SizedBox(

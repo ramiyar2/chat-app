@@ -5,10 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../../../data/color.dart';
 import 'style.dart';
 
-class FileMsg extends StatelessWidget {
+class ContactMsg extends StatelessWidget {
   var data;
   var currentUser;
-  FileMsg({required this.data, required this.currentUser, Key? key})
+  ContactMsg({required this.data, required this.currentUser, Key? key})
       : super(key: key);
 
   @override
@@ -22,19 +22,21 @@ class FileMsg extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white10, borderRadius: BorderRadius.circular(5)),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Icon(Icons.document_scanner_rounded, color: Colors.white),
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                        image: const AssetImage('assets/img/user.png'),
+                        fit: BoxFit.cover)),
+              ),
               const SizedBox(
                 width: 10,
               ),
-              Container(
-                constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.4),
-                child: Text(
-                  data['file'],
-                  style: const TextStyle(color: Colors.white, fontSize: 10),
-                ),
-              ),
+              Text(getName(data)),
             ],
           ),
         ),
@@ -48,4 +50,12 @@ class FileMsg extends StatelessWidget {
       ],
     );
   }
+}
+
+String getName(data) {
+  String fName = data['Contact']['firstName'] ?? '';
+  String mName = data['Contact']['middleName'] ?? '';
+  String lName = data['Contact']['lastName'] ?? '';
+  print("$fName $mName $lName        +56489465");
+  return "$fName $mName $lName";
 }
