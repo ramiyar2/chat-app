@@ -27,8 +27,9 @@ abstract class _ChatState with Store {
           .snapshots()
           .listen((QuerySnapshot snapshot) {
         if (snapshot.docs.isNotEmpty) {
+          String msg = getMsg(snapshot.docs.first);
           message[chatId] = {
-            'msg': snapshot.docs.first['msg'],
+            'msg': msg,
             'time': snapshot.docs.first['createdOn'],
             'frindName': snapshot.docs.first['frindName'],
             'frindUid': snapshot.docs.first['uid'],
@@ -71,5 +72,17 @@ abstract class _ChatState with Store {
         return data['chatId'];
       }).toList();
     });
+  }
+
+  String getMsg(QueryDocumentSnapshot<Object?> first) {
+    return first['isImage']
+        ? '📷 image'
+        : first['isAudio']
+            ? '🎙️ Audio'
+            : first['isFile']
+                ? '📑 file'
+                : first['isContact']
+                    ? '👤 contact'
+                    : first['msg'].toString();
   }
 }
