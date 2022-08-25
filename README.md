@@ -10,7 +10,7 @@
 
 </div>
 
-Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It is clone of whatsapp messenger.User can create stories,chat and search in real time.
+Welcome ,That is a flutter chat app built with Firestore and Firebase Cloud. It is like of whatsapp messenger.User can create stories,chat and search in real time.
 
 <br><br>  
 
