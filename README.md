@@ -71,7 +71,14 @@ samples, guidance on mobile development, and a full API reference.
 <br><br>
 
 ## 💻 Tools used
+
+### ✒️ Design  
 - [Figma](https://www.figma.com/)
+- [Adobe Ps](https://www.adobe.com/products/photoshop/)
+
+**Notes:** All design info is available on [Behance](https://www.behance.net/gallery/151070831/Chat-app),As well as the design files available on [figma](https://www.figma.com/file/qkQKP5DO3YmgVLog4TQobt/Untitled?node-id=0%3A1).
+
+### 👨‍💻 Coding
 - [Flutter & Dart](http://flutter.dev)
 - [Firebase  Flutter](https://firebase.google.com/)
 - [MobX State Management](https://pub.dev/packages/mobx)
