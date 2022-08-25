@@ -22,6 +22,7 @@ https://user-images.githubusercontent.com/56196099/186564693-f0f7982b-b3d3-4d8b-
 
 
 
+![](screenshots/chat-app-demo.gif)
 ![](screenshots/1.jpg)
 ![](screenshots/2.jpg)
 ![](screenshots/3.jpg)
